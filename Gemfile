@@ -12,6 +12,9 @@ gem 'bower'
 
 gem 'jquery-rails'
 
+gem 'devise_token_auth'
+gem 'omniauth'
+
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
