@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   namespace :api do
     resources :events,
       only: [:index, :show, :create, :update, :destroy],
-      :defaults => {:format => 'json'}
-    resources :tasks,
-      only: [:index, :show, :create, :update, :destroy],
-      :defaults => {:format => 'json'}
+      :defaults => {:format => 'json'} do
+        resources :tasks,
+          only: [:index, :show, :create, :update, :destroy],
+          :defaults => {:format => 'json'}
+      end
   end
 
 end
