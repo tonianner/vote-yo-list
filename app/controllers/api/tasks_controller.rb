@@ -10,11 +10,11 @@ module API
     before_action :set_event
 
     def index
-      render json: Task.all
+      render json: @event.tasks
     end
 
     def show
-      render json: Task.find(params[:id])
+      render json: @event.tasks.find(params[:id])
     end
 
     def create
