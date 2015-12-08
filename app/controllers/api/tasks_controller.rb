@@ -18,8 +18,8 @@ module API
     end
 
     def create
-      task = @event.tasks.create(task_params)
-      task.event_id = current_event.id
+      task = @event.tasks.new(task_params)
+      # task.event_id = current_event.id
 
       if task.save
         render json: task,
