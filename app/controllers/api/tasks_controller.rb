@@ -14,7 +14,7 @@ module API
     end
 
     def show
-      render json: Event.find(params[:id])
+      render json: Task.find(params[:id])
     end
 
     def create
@@ -30,7 +30,7 @@ module API
       #   # location: [:api, task]
       # end
 
-      @task = @event.tasks.create(task_params)
+      @task = Events.tasks.create(task_params)
         if @task.save
           render json: @task, status: :created
         else
