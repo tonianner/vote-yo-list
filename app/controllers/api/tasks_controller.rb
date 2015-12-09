@@ -6,8 +6,7 @@ module API
     # Status: 202 accepted
     # Status: 201 created
     # Status: 200 ok
-
-    before_filter :set_event
+    before_action :set_event
 
     def index
       render json: @event.tasks
