@@ -19,10 +19,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
         templateUrl: "<%= asset_path('auth/login.html')%>",
         controller: 'LogInCtrl'
       })
-      .state('logout', {
-        url: '/logout',
-        controller: 'LogOutCtrl'
-      })
 
     $urlRouterProvider.otherwise('/');
 

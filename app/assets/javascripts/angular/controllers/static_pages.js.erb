@@ -1,10 +1,14 @@
-app.controller('homeCtrl', ['$scope', '$auth', '$location', function($scope, $auth, $location){
+app.controller('homeCtrl', ['$scope', '$auth', '$location',
+  function($scope, $auth, $location){
 
-  $scope.logout = function () {
-    $auth.signOut().then(function(resp) {
-      console.log(resp);
-    }).catch(function(resp) {
-      console.log(resp);
-    });
-  };
+    // wow: animation start on scroll
+    new WOW().init();
+
+    $scope.logout = function () {
+      $auth.signOut().then(function(resp) {
+        console.log(resp);
+      }).catch(function(resp) {
+        console.log(resp);
+      });
+    };
 }])

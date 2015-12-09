@@ -1,0 +1,71 @@
+/* index.html: HEADER*/
+#static-index {
+  background-image:
+    image-url('headerImage.jpg');
+  background-size: cover;
+  padding-top: 160px;
+  padding-bottom: 100px;
+  color: white;
+
+  #static-banner {
+    h1 {
+      font-weight: 300;
+      font-size: 70px;
+      padding-bottom: 10px;
+
+      span {
+        color: turquoise;
+        font-weight: bold;
+        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+      }
+    }
+
+    .btn {
+      background: transparent;
+      border-radius: 2px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 20px;
+      width: 180px;
+      height: 60px;
+      padding-top: 18px;
+      color: white;
+      -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .btn:hover {
+      background: turquoise;
+      border-color: transparent;
+    }
+  }
+
+  @media only screen and ( max-width: 768px ) {
+    #static-banner > h1 {
+      font-size: 52px;
+    }
+  }
+
+  @media only screen and ( max-width: 360px ) {
+    #static-banner > h1 {
+      font-size: 32px;
+    }
+  }
+
+}
+
+/* index.html: CONTENT */
+.content-section-dark {
+  padding: 50px 0;
+  background-color: #f8f8f8;
+}
+.content-section-light {
+  padding: 50px 0;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+}
+.section-heading-spacer {
+  float: left;
+  width: 200px;
+  border-top: 3px solid #e7e7e7;
+}
