@@ -19,6 +19,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
         templateUrl: "<%= asset_path('auth/login.html')%>",
         controller: 'LogInCtrl'
       })
+      .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: "<%= asset_path('dashboard/index.html')%>",
+        controller: 'DashBoardCtrl'
+      })
 
     $urlRouterProvider.otherwise('/');
 
