@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require angular/angular.min
 //= require angular-ui-router/release/angular-ui-router
-//= require_tree .
+
 //= require ng-token-auth/dist/ng-token-auth
 //= require angular-cookie/angular-cookie
+
+//= require_tree .
