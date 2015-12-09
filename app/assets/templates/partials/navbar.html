@@ -14,11 +14,11 @@
 
         <li><a href="#about">ABOUT</a></li>
 
-        <li><a href="/#/signup">Register</a></li>
+        <li><a ng-hide="current_user" href="/#/signup">Register</a></li>
 
-        <li><a href="/#/login">Login</a></li>
+        <li><a ng-hide="current_user" href="/#/login">Login</a></li>
 
-        <li><a href='#' ng-click="logout()">Logout</a></li>
+        <li><a ng-show="current_user" href='#' ng-click="logout()">Logout</a></li>
       </ul>
     </div>
   </div>
