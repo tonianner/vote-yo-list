@@ -7,7 +7,7 @@ module API
     # Status: 201 created
     # Status: 200 ok
 
-    before_action :set_event
+    before_filter :set_event
 
     def index
       render json: @event.tasks
@@ -23,12 +23,12 @@ module API
 
       if task.save
         render json: task,
-        status: 201,
-        location: [:api, task]
+        status: 201
+        # location: [:api, task]
       else
         render json: task.errors,
-        status: 422,
-        location: [:api, task]
+        status: 422
+        # location: [:api, task]
       end
     end
 

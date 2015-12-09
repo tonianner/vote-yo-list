@@ -8,6 +8,9 @@ Rails.application.routes.draw do
         resources :tasks,
           only: [:index, :show, :create, :update, :destroy],
           :defaults => {:format => 'json'}
+        resources :locations,
+          only: [:index, :show, :create, :update, :destroy],
+          :defaults => {:format => 'json'}
       end
   end
 
