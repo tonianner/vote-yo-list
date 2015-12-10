@@ -1,0 +1,18 @@
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+
+  <form ng-submit="addEvent()">
+    <input class="text-box"
+           type="text"
+           placeholder="Event Name"
+           ng-model="add_event_model">
+    <input type="submit" class="btn btn-add" value="+">
+  </form>
+
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand" ng-repeat="event in eventList">
+      <strong>{{event.title}}</strong>
+    </li>
+  </ul>
+
+</div>

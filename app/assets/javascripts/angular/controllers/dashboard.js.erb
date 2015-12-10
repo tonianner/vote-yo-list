@@ -2,4 +2,16 @@ app.controller('DashBoardCtrl', ['$scope', '$auth', '$location',
   function($scope, $auth, $location){
     console.log('DashBoardCtrl')
 
+    $scope.addEvent = addEvent;
+    $scope.eventList = [
+      {title: "Xmas party"},
+      {title: "Barbecue"},
+      {title: "Wedding"}
+    ];
+
+    function addEvent(){
+      $scope.eventList.push({title: $scope.add_event_model});
+      $scope.add_event_model = null;
+    }
+
 }])

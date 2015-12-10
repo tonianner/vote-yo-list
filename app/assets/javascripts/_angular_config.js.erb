@@ -24,6 +24,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
         templateUrl: "<%= asset_path('dashboard/index.html')%>",
         controller: 'DashBoardCtrl'
       })
+      .state('eventContent', {
+        url: '/dashboard/eventContent',
+        templateUrl: "<%= asset_path('dashboard/event_content.html')%>"
+      })
 
     $urlRouterProvider.otherwise('/');
 
