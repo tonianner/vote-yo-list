@@ -1,11 +1,12 @@
-app.controller('DashBoardCtrl', ['$scope', '$http',
-  function($scope, $http){
+app.controller('DashBoardCtrl', ['$scope', '$http', '$stateParams',
+  function($scope, $http, $stateParams){
     console.log('DashBoardCtrl')
 
     $scope.newEvent = {};
+    // $scope.oneEvent = {};
     $scope.addEvent = addEvent;
+    // $scope.showEvent = showEvent;
     $scope.eventList = [];
-
 
     getEvents();
     function getEvents(){
@@ -26,4 +27,16 @@ app.controller('DashBoardCtrl', ['$scope', '$http',
 
       $scope.newEvent = {};
     }
+
+    // function showEvent(id){
+    //   $scope.title = $stateParams.title;
+
+    //   $http
+    //     .get('http://localhost:3000/api/events/:id')
+    //     .success(function(data) {
+    //       $scope.oneEvent = data;
+    //       console.log(data)
+    //     });
+    // }
+
 }])
