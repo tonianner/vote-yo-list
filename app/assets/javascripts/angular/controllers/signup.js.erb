@@ -7,7 +7,7 @@ app.controller('SignUpCtrl', [
         $auth.submitRegistration($scope.registrationForm).
          then(function(resp) {
            console.log(resp);
-           $location.path('/');
+           $location.path('/events');
          }).
          catch(function(resp) {
            console.log(resp.data.errors.full_messages);

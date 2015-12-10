@@ -20,13 +20,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
         controller: 'LogInCtrl'
       })
       .state('dashboard', {
-        url: '/dashboard',
+        url: '/events',
         templateUrl: "<%= asset_path('dashboard/index.html')%>",
         controller: 'DashBoardCtrl'
       })
       .state('eventContent', {
-        url: '/dashboard/eventContent',
-        templateUrl: "<%= asset_path('dashboard/event_content.html')%>"
+        url: '/events/:eventId',
+        templateUrl: "<%= asset_path('dashboard/event_content.html')%>",
+        controller: 'DashBoardCtrl'
       })
 
     $urlRouterProvider.otherwise('/');

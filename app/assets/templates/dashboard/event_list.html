@@ -1,18 +1,25 @@
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
-
-  <form ng-submit="addEvent()">
-    <input class="text-box"
-           type="text"
-           placeholder="Event Name"
-           ng-model="add_event_model">
-    <input type="submit" class="btn btn-add" value="+">
-  </form>
-
   <ul class="sidebar-nav">
-    <li class="sidebar-brand" ng-repeat="event in eventList">
-      <strong>{{event.title}}</strong>
+    <div>
+      <div class="col-lg-12">
+        <form class="input-group" ng-submit="addEvent()">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Add Event"
+                 ng-model="newEvent.title"
+                 name="event[title]">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Add!</button>
+          </span>
+        </form><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+    <li>
+      <a><strong ng-bind="newEvent.title"></strong></a>
+    </li>
+    <li ng-repeat="event in eventList | orderBy:'title'">
+      <a href="#/events/{{event.id}}"><strong>{{event.title}}</strong></a>
     </li>
   </ul>
-
 </div>

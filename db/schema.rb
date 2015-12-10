@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20151209030753) do
     t.integer "user_id",  null: false
   end
 
-  add_index "events_users", ["event_id"], name: "index_events_users_on_event_id", using: :btree
-  add_index "events_users", ["user_id"], name: "index_events_users_on_user_id", using: :btree
+  add_index "events_users", ["event_id", "user_id"], name: "index_events_users_on_event_id_and_user_id", using: :btree
+  add_index "events_users", ["user_id", "event_id"], name: "index_events_users_on_user_id_and_event_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "place_name"

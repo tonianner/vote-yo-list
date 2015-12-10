@@ -20,6 +20,8 @@ module API
 
     def create
       event = Event.new(event_params)
+
+      user_id = User.find_by(id: params[:id])
       if event.save
         render json: event,
         status: 201,
@@ -55,7 +57,7 @@ module API
     def set_event
       @event = Event.find_by(id: params[:id])
       if @event.nil?
-        render json: {message: "Event Not Found"}, status: 404
+        render json: {msessage: "Event Not Found"}, status: 404
       end
     end
 

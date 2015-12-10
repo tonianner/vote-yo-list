@@ -1,17 +1,29 @@
-app.controller('DashBoardCtrl', ['$scope', '$auth', '$location',
-  function($scope, $auth, $location){
+app.controller('DashBoardCtrl', ['$scope', '$http',
+  function($scope, $http){
     console.log('DashBoardCtrl')
 
+    $scope.newEvent = {};
     $scope.addEvent = addEvent;
-    $scope.eventList = [
-      {title: "Xmas party"},
-      {title: "Barbecue"},
-      {title: "Wedding"}
-    ];
+    $scope.eventList = [];
 
-    function addEvent(){
-      $scope.eventList.push({title: $scope.add_event_model});
-      $scope.add_event_model = null;
+
+    getEvents();
+    function getEvents(){
+      $http
+        .get('http://localhost:3000/api/events')
+        .success(function(data){
+          $scope.eventList = data
+          // console.log(data)
+        })
     }
 
+    function addEvent(){
+      $http
+        .post('http://localhost:3000/api/events', $scope.newEvent)
+        .success(function(data){
+          getEvents();
+        })
+
+      $scope.newEvent = {};
+    }
 }])
