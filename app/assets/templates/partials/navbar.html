@@ -8,11 +8,14 @@
       </button>
       <a href="#" class="navbar-brand">Logo</a>
     </div>
-    <div class="collapse navbar-collapse single-page-nav">
+    <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
+
         <li><a ng-href="#features">FEATURES</a></li>
 
         <li><a href="#about">ABOUT</a></li>
+
+        <li><a ng-show="current_user">Welcome {{ user.email }}</a></li>
 
         <li><a ng-hide="current_user" href="/#/signup">Register</a></li>
 

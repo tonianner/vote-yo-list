@@ -1,18 +1,21 @@
-app.controller('SignUpCtrl', ['$scope', '$auth', '$location',
-  function($scope, $auth, $location){
+app.controller('SignUpCtrl', [
+  '$scope', '$auth', '$location',
+    function($scope, $auth, $location){
+      console.log('SignUpCtrl')
 
-    $scope.signup = function () {
-      $auth.submitRegistration($scope.registrationForm).
-       then(function(resp) {
-         // handle success response
-         // console.log(resp);
-
-         // redirect back to root when registration succesfull
-         $location.path('/');
-       }).
-       catch(function(resp) {
-         // handle error response
-         // console.log(resp.data.errors.full_messages);
-       });
-    };
-}])
+      $scope.signup = function () {
+        $auth.submitRegistration($scope.registrationForm).
+         then(function(resp) {
+           console.log(resp);
+           $location.path('/');
+         }).
+         catch(function(resp) {
+           console.log(resp.data.errors.full_messages);
+         });
+        // alert
+        $scope.$on('auth:registration-email-success', function(ev, user) {
+          alert("Registered: " + user.email);
+        });
+      };
+    }
+])
