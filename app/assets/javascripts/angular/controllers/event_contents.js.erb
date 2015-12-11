@@ -1,0 +1,23 @@
+app.controller("EventCtrl", DashBoardCtrl)
+
+DashBoardCtrl.$inject = ['TaskFactory','EventFactory', '$scope', '$stateParams']
+
+function DashBoardCtrl(TaskFactory, EventFactory, $scope, $stateParams) {
+
+  // EVENTS //
+  var EventList = EventFactory;
+
+  // Index
+  $scope.allEvents = EventList.query();
+  console.log($scope.allEvents)
+  // Show one event
+  $scope.selectEvent = function(id) {
+    $scope.selectedEvent = EventList.get({id: id})
+  };
+
+  // TASKS //
+  var TaskList = TaskFactory;
+  $scope.allTasks = TaskList.query({eventId: $stateParams.id})
+  console.log($scope.allTasks)
+
+}

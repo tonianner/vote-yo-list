@@ -9,34 +9,39 @@
         <a data-toggle="tab" ng-click="tab = 1">Add Friend</a>
       </li>
       <li ng-class="{active:tab === 2}">
-        <a data-toggle="tab" ng-click="tab = 2">Location Voter</a>
+        <a data-toggle="tab" ng-click="tab = 2">To Do List</a>
       </li>
       <li ng-class="{active:tab === 3}">
-        <a data-toggle="tab" ng-click="tab = 3">To Do List</a>
-      </li>
-      <li ng-class="{active:tab === 4}">
-        <a data-toggle="tab" ng-click="tab = 4">Completed List</a>
+        <a data-toggle="tab" ng-click="tab = 3">Completed List</a>
       </li>
     </ul>
 
     <!-- Content per tab in specified event -->
-    <friend-tab></friend-tab>
-    <location-tab></location-tab>
 
-    <div class="tab-content" ng-show="tab === 3">To Do List tab
-
-    <ul>
-      <li ng-repeat="task in allTasks">
-        {{ task.title}}
-      </li>
-    </ul>
-
-
+    <!-- Add Friend Tab -->
+    <div class="tab-content" ng-show="tab === 1">
+      <h1>
+        {{selectedEvent.title}} <strong>in Friend tab </strong>
+      <h1>
     </div>
 
-    <div class="tab-content" ng-show="tab === 4">
+    <!-- To do Tab -->
+    <div class="tab-content" ng-show="tab === 2">
+      <h1>
+        {{selectedEvent.title}} <strong>in To Do tab </strong>
+      </h1>
+      <ul>
+        <li ng-repeat="task in allTasks">
+          {{ task.title}}
+        </li>
+      </ul>
+    </div>
 
-      Tab 4
+    <!-- Completed List tab -->
+    <div class="tab-content" ng-show="tab === 3">
+      <h1>
+        {{selectedEvent.title}} <strong>in Completed tab </strong>
+      </h1>
     </div>
 
   </div>
