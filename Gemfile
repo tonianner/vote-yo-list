@@ -11,6 +11,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bower'
 
 gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 4.4.0'
+
+gem 'devise_token_auth'
+gem 'omniauth'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
