@@ -9,15 +9,12 @@ function DashBoardCtrl(TaskFactory, EventFactory, $scope, $stateParams) {
 
   // Index
   $scope.allEvents = EventList.query();
-  console.log($scope.allEvents)
-  // Show one event
+
+  // Show one event and show todo tasks in the event
   $scope.selectEvent = function(id) {
     $scope.selectedEvent = EventList.get({id: id})
+    $scope.eventId = id
+    $scope.allTasks = TaskFactory.query({eventId: $scope.eventId})
   };
-
-  // TASKS //
-  var TaskList = TaskFactory;
-  $scope.allTasks = TaskList.query({eventId: $stateParams.id})
-  console.log($scope.allTasks)
 
 }
