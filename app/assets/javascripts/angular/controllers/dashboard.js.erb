@@ -1,42 +1,20 @@
-app.controller('DashBoardCtrl', ['$scope', '$http', '$stateParams',
-  function($scope, $http, $stateParams){
-    console.log('DashBoardCtrl')
+app.controller("DashBoardCtrl", DashBoardCtrl)
 
-    $scope.newEvent = {};
-    // $scope.oneEvent = {};
-    $scope.addEvent = addEvent;
-    // $scope.showEvent = showEvent;
-    $scope.eventList = [];
+DashBoardCtrl.$inject = ['TaskFactory','EventFactory', '$auth', '$scope', '$stateParams']
 
-    getEvents();
-    function getEvents(){
-      $http
-        .get('http://localhost:3000/api/events')
-        .success(function(data){
-          $scope.eventList = data
-          // console.log(data)
-        })
-    }
+function DashBoardCtrl(TaskFactory, EventFactory, $auth, $scope, $stateParams) {
+  // $scope.user = $auth.user
+  var EventList = EventFactory;
+  var TaskList = TaskFactory;
 
-    function addEvent(){
-      $http
-        .post('http://localhost:3000/api/events', $scope.newEvent)
-        .success(function(data){
-          getEvents();
-        })
+  // Index
+  $scope.allEvents = EventList.query();
 
-      $scope.newEvent = {};
-    }
+  // $scope.allTasks = TaskFactory.query({eventId: $stateParams.id})
 
-    // function showEvent(id){
-    //   $scope.title = $stateParams.title;
+  // $scope.allTasks = TaskFactory.get({eventId: $stateParams.id, id: 38})
 
-    //   $http
-    //     .get('http://localhost:3000/api/events/:id')
-    //     .success(function(data) {
-    //       $scope.oneEvent = data;
-    //       console.log(data)
-    //     });
-    // }
-
-}])
+  $scope.selectEvent = function(id) {
+    $scope.selectedEvent = EventList.get({id: id})
+  };
+}

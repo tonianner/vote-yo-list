@@ -8,10 +8,11 @@ module API
     # Status: 200 ok
     before_action :authenticate_user!
     before_action :set_event, except: [:index, :create]
-    before_action :event_permission!, except: [:index, :create]
+    # before_action :event_permission!, except: [:create]
 
     def index
-      render json: Event.all
+      eventList = current_user.events
+      render json: eventList
     end
 
     def show
@@ -20,8 +21,8 @@ module API
 
     def create
       event = Event.new(event_params)
+      event.users << current_user
 
-      user_id = User.find_by(id: params[:id])
       if event.save
         render json: event,
         status: 201,

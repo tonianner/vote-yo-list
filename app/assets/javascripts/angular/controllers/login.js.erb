@@ -16,9 +16,6 @@ app.controller('LogInCtrl', [
            console.log(resp.errors);
          });
         // alert
-        $rootScope.$on('auth:login-success', function(ev, user) {
-          alert('Welcome ' + user.email);
-        });
       };
     }
 ])

@@ -13,9 +13,6 @@ app.controller('SignUpCtrl', [
            console.log(resp.data.errors.full_messages);
          });
         // alert
-        $scope.$on('auth:registration-email-success', function(ev, user) {
-          alert("Registered: " + user.email);
-        });
       };
     }
 ])

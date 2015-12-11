@@ -18,8 +18,8 @@
     <li>
       <a><strong ng-bind="newEvent.title"></strong></a>
     </li>
-    <li ng-repeat="event in eventList | orderBy:'title'">
-      <a href="#/events/{{event.id}}"><strong>{{event.title}}</strong></a>
+    <li ng-repeat="event in allEvents | orderBy:'title'">
+      <a ng-click="selectEvent(event.id)"><strong>{{event.title}}</strong></a>
     </li>
   </ul>
 </div>

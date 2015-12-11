@@ -51,7 +51,7 @@ module API
 
     private
     def set_event
-      @event = Event.find(params[:event_id])
+      @event = Event.find_by(id: params[:event_id])
     end
 
     def task_params
