@@ -32,18 +32,17 @@ function DashBoardCtrl(EventFactory, $scope, $stateParams) {
 
   $scope.updateEvent = function(selectedEvent) {
     console.log(selectedEvent)
-    console.log(selectedEvent.title)
-    console.log(selectedEvent.id)
 
-    // Gets object id
-    var editEvent = EventList.get({id: selectedEvent.id})
-    // returns object promise > console.log(editEvent)
+    // Gets object id // returns object promise > console.log(editEvent)
+    var editEvent = EventList.get({id: selectedEvent.id}, function(){
+      $scope.$watch('selectedEvent.title', function (val) {
+        $scope.selectedEvent.title = val;
+        console.log($scope.selectedEvent.title)
+      });
+    })
 
     // Now call update passing in the ID first then the object you are updating
-    EventList.update({ id: selectedEvent.id }, editEvent);
-
-
+    EventList.update({id: selectedEvent.id}, editEvent);
 
   }
-
 }

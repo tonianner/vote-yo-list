@@ -1,6 +1,7 @@
 <h1>You are in Current event: {{selectedEvent.title}}</h1>
 
 <div>
+  <!-- http://vitalets.github.io/angular-xeditable/#onbeforesave -->
   <a href="#" onbeforesave="updateEvent(selectedEvent)" editable-text="selectedEvent.title">{{ selectedEvent.title}}</a>
 </div>
 
