@@ -1,8 +1,8 @@
 app.controller("EventCtrl", DashBoardCtrl)
 
-DashBoardCtrl.$inject = ['TaskFactory','EventFactory', '$scope', '$stateParams']
+DashBoardCtrl.$inject = ['EventFactory', '$scope', '$stateParams']
 
-function DashBoardCtrl(TaskFactory, EventFactory, $scope, $stateParams) {
+function DashBoardCtrl(EventFactory, $scope, $stateParams) {
 
   // EVENTS //
   var EventList = EventFactory;
@@ -18,18 +18,32 @@ function DashBoardCtrl(TaskFactory, EventFactory, $scope, $stateParams) {
     $scope.selectedEvent = EventList.get({id: id})
     $scope.eventId = id
 
-    // Show tasks in selected event
-    $scope.allTasks = TaskFactory.query({eventId: $scope.eventId})
+    // Show TASKS in selected event
+    // $scope.allTasks = TaskFactory.query({eventId: $scope.eventId})
   };
 
   // Create event
   $scope.addEvent = function() {
-    console.log('click')
     EventList.save($scope.newEvent, function(newEvent) {
       $scope.allEvents.push(newEvent);
       $scope.newEvent = {}
-      console.log($scope.newEvent)
     });
+  };
+
+  $scope.updateEvent = function(selectedEvent) {
+    console.log(selectedEvent)
+    console.log(selectedEvent.title)
+    console.log(selectedEvent.id)
+
+    // Gets object id
+    var editEvent = EventList.get({id: selectedEvent.id})
+    // returns object promise > console.log(editEvent)
+
+    // Now call update passing in the ID first then the object you are updating
+    EventList.update({ id: selectedEvent.id }, editEvent);
+
+
+
   }
 
 }

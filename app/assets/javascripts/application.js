@@ -23,6 +23,8 @@
 //= require angular-animate/angular-animate.min
 //= require wow/dist/wow.min
 
+//= require angular-xeditable/dist/js/xeditable.min
+
 //= require ng-token-auth/dist/ng-token-auth
 
 //= require_tree .
