@@ -35,6 +35,7 @@ module API
     end
 
     def update
+      eventList = current_user.events
       if @event.update(event_params)
         render json: @event, status: 202
       else
