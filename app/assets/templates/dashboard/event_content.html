@@ -1,0 +1,55 @@
+<h1>You are in Current event: {{selectedEvent.title}}</h1>
+
+<div>
+  <!-- http://vitalets.github.io/angular-xeditable/#onbeforesave -->
+  <a href="#" onbeforesave="updateEvent(selectedEvent)" editable-text="selectedEvent.title">{{ selectedEvent.title}}</a>
+</div>
+
+<br>
+
+<!-- Content per Event -->
+<div class="row">
+  <div class="col-lg-12" ng-init="tab = 1">
+    <!-- Tab Navigation per Event -->
+    <ul class="nav nav-tabs">
+      <li ng-class="{active:tab === 1}">
+        <a data-toggle="tab" ng-click="tab = 1">Add Friend</a>
+      </li>
+      <li ng-class="{active:tab === 2}">
+        <a data-toggle="tab" ng-click="tab = 2">To Do List</a>
+      </li>
+      <li ng-class="{active:tab === 3}">
+        <a data-toggle="tab" ng-click="tab = 3">Completed List</a>
+      </li>
+    </ul>
+
+    <!-- Content per tab in specified event -->
+
+    <!-- Add Friend Tab -->
+    <div class="tab-content" ng-show="tab === 1">
+      <h1>
+        {{selectedEvent.title}} <strong>in Friend tab </strong>
+      <h1>
+    </div>
+
+    <!-- To do Tab -->
+    <div class="tab-content" ng-show="tab === 2">
+      <h1>
+        {{selectedEvent.title}} <strong>in To Do tab </strong>
+      </h1>
+      <ul>
+        <li ng-repeat="task in allTasks">
+          {{ task.title}}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Completed List tab -->
+    <div class="tab-content" ng-show="tab === 3">
+      <h1>
+        {{selectedEvent.title}} <strong>in Completed tab </strong>
+      </h1>
+    </div>
+
+  </div>
+</div>
