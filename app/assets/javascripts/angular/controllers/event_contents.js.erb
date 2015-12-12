@@ -7,6 +7,9 @@ function DashBoardCtrl(TaskFactory, EventFactory, $scope, $stateParams) {
   // EVENTS //
   var EventList = EventFactory;
 
+  // New Event
+  $scope.newEvent = {};
+
   // Index
   $scope.allEvents = EventList.query();
 
@@ -14,7 +17,19 @@ function DashBoardCtrl(TaskFactory, EventFactory, $scope, $stateParams) {
   $scope.selectEvent = function(id) {
     $scope.selectedEvent = EventList.get({id: id})
     $scope.eventId = id
+
+    // Show tasks in selected event
     $scope.allTasks = TaskFactory.query({eventId: $scope.eventId})
   };
+
+  // Create event
+  $scope.addEvent = function() {
+    console.log('click')
+    EventList.save($scope.newEvent, function(newEvent) {
+      $scope.allEvents.push(newEvent);
+      $scope.newEvent = {}
+      console.log($scope.newEvent)
+    });
+  }
 
 }
