@@ -19,8 +19,8 @@ function DashBoardCtrl(EventFactory, $scope, $stateParams) {
   // Show one event and show todo tasks in the event
   $scope.selectEvent = function(id) {
     $scope.selectedEvent = EventList.get({id: id})
-    // $scope.eventId = id
 
+    // $scope.eventId = id
     // Show TASKS in selected event
     // $scope.allTasks = TaskFactory.query({eventId: $scope.eventId})
   };
@@ -33,10 +33,19 @@ function DashBoardCtrl(EventFactory, $scope, $stateParams) {
     });
   };
 
-  // Update event
+  // Update event >> Working but need to refresh
   $scope.updateEvent = function(data) {
     $scope.selectedEvent.title = data
     $scope.selectedEvent.$update({id: $scope.selectedEvent.id})
   }
+
+  // Delete
+  $scope.deleteEvent= function(event){
+    EventList.delete({id: event.id});
+    var index = $scope.allEvents.indexOf(event);
+    $scope.allEvents.splice(index, 1);
+  }
+
+
 
 }
