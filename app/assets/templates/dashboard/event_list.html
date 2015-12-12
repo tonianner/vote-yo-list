@@ -20,7 +20,7 @@
     </li>
     <li ng-repeat="event in allEvents | orderBy:'title'">
       <a ng-click="selectEvent(event.id)"><strong>{{event.title}}</strong></a>
-      <span><button class="btn btn-warning pull-right" ng-click="deleteEvent(event)">X</button></span>
+      <span><button class="btn btn-danger btn-xs pull-right" ng-click="deleteEvent(event)">X</button></span>
     </li>
   </ul>
 </div>

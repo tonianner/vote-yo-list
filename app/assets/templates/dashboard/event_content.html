@@ -1,8 +1,8 @@
-<h1>You are in Current event: {{selectedEvent.title}}</h1>
+  <!-- http://vitalets.github.io/angular-xeditable/#onbeforesave -->
 
 <div>
-  <!-- http://vitalets.github.io/angular-xeditable/#onbeforesave -->
-  <a href="#" onbeforesave="updateEvent($data)" editable-text="selectedEvent.title" name="event[title]">{{ selectedEvent.title}}</a>
+  <h1>You are in Current event: <a href="#" onbeforesave="updateEvent($data)" editable-text="selectedEvent.title" name="event[title]">{{ selectedEvent.title}}</a>
+  </h1>
 </div>
 
 <br>
@@ -32,17 +32,8 @@
       <h1>
     </div>
 
-    <!-- To do Tab -->
-    <div class="tab-content" ng-show="tab === 2">
-      <h1>
-        {{selectedEvent.title}} <strong>in To Do tab </strong>
-      </h1>
-      <ul>
-        <li ng-repeat="task in allTasks">
-          {{ task.title}}
-        </li>
-      </ul>
-    </div>
+    <!-- To do Tab == 2-->
+    <to-do-tab></to-do-tab>
 
     <!-- Completed List tab -->
     <div class="tab-content" ng-show="tab === 3">

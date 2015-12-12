@@ -1,8 +1,8 @@
 app.controller("EventCtrl", DashBoardCtrl)
 
-DashBoardCtrl.$inject = ['EventFactory', '$scope', '$stateParams']
+DashBoardCtrl.$inject = ['ToDoFactory', 'EventFactory', '$scope', '$stateParams']
 
-function DashBoardCtrl(EventFactory, $scope, $stateParams) {
+function DashBoardCtrl(ToDoFactory, EventFactory, $scope, $stateParams) {
 
   // EVENTS //
   var EventList = EventFactory;
@@ -10,20 +10,11 @@ function DashBoardCtrl(EventFactory, $scope, $stateParams) {
   // New Event
   $scope.newEvent = {};
 
-//
-  $scope.selectedEvent = {}
+  $scope.selectedEvent = {};
 
   // Index
   $scope.allEvents = EventList.query();
 
-  // Show one event and show todo tasks in the event
-  $scope.selectEvent = function(id) {
-    $scope.selectedEvent = EventList.get({id: id})
-
-    // $scope.eventId = id
-    // Show TASKS in selected event
-    // $scope.allTasks = TaskFactory.query({eventId: $scope.eventId})
-  };
 
   // Create event
   $scope.addEvent = function() {
@@ -33,19 +24,36 @@ function DashBoardCtrl(EventFactory, $scope, $stateParams) {
     });
   };
 
-  // Update event >> Working but need to refresh
+  // Update event >> Working but need to refresh for event list
   $scope.updateEvent = function(data) {
     $scope.selectedEvent.title = data
     $scope.selectedEvent.$update({id: $scope.selectedEvent.id})
   }
 
   // Delete
-  $scope.deleteEvent= function(event){
+  $scope.deleteEvent= function(event) {
     EventList.delete({id: event.id});
     var index = $scope.allEvents.indexOf(event);
     $scope.allEvents.splice(index, 1);
   }
 
 
+  // Show one event and show todo tasks in the event
+  $scope.selectEvent = function(id) {
+    $scope.selectedEvent = EventList.get({id: id})
 
+    $scope.eventId = id
+
+    var TaskLists = ToDoFactory
+
+    // Show TASKS in selected event
+    $scope.allTasks = TaskLists.query({eventId: $scope.eventId})
+
+    // Delete Task
+    $scope.deleteTask= function(id) {
+      TaskLists.delete({eventId: $scope.eventId, id: id});
+      var index = $scope.allTasks.indexOf(event);
+      $scope.allTasks.splice(index, 1);
+    }
+  };
 }

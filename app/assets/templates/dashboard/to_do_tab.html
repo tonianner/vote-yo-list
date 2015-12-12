@@ -1,0 +1,11 @@
+<div class="tab-content" ng-show="tab === 2" ng-click='getId(selectedEvent.id)'>
+  <h1>
+    {{selectedEvent.title}} <strong>in To Do tab </strong>
+  </h1>
+  <ul>
+    <li ng-repeat="task in allTasks">
+      {{ task.title}}
+      <button ng-click="deleteTask(task.id)">x</button>
+    </li>
+  </ul>
+</div>
