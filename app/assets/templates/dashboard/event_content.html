@@ -1,0 +1,78 @@
+<div id="wrapper">
+
+  <!-- Populate Events List -->
+  <event-list></event-list>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+
+        <!-- http://vitalets.github.io/angular-xeditable/#onbeforesave -->
+      <section>
+        <h1>You are in Current event:
+          <a href="#"
+             onbeforesave="updateEvent($data)"
+             editable-text="selectedEvent.title"
+             name="event[title]">{{ selectedEvent.title || 'empty'}}</a>
+        </h1>
+
+        <!-- https://github.com/720kb/angular-datepicker#angular-datepicker -->
+        <form ng-submit="updateEventDate()">
+          <datepicker date-format="yyyy-MM-dd" selector="form-control" class="col-sm-4">
+            <p>Due Date:</p>
+            <div class="input-group">
+                <span class="input-group-addon" style="cursor: pointer"><i class="fa fa-lg fa-calendar"></i></span>
+                <input class="form-control"
+                       placeholder="{{ selectedEvent.due_date }}"
+                       ng-model="selectedEvent.due_date"
+                       />
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit">Save!</button>
+                </span>
+            </div>
+          </datepicker>
+        </form>
+      </section>
+
+
+      <br>
+      <br>
+
+      <!-- Content per Event -->
+      <div class="row" id="content-event">
+        <div class="col-lg-12" ng-init="tab = 1">
+          <!-- Tab Navigation per Event -->
+          <ul class="nav nav-tabs">
+            <li ng-class="{active:tab === 1}">
+              <a data-toggle="tab" ng-click="tab = 1">Add Friend</a>
+            </li>
+            <li ng-class="{active:tab === 2}">
+              <a data-toggle="tab" ng-click="tab = 2">To Do List</a>
+            </li>
+            <li ng-class="{active:tab === 3}">
+              <a data-toggle="tab" ng-click="tab = 3">Completed List</a>
+            </li>
+          </ul>
+
+          <!-- Content per tab in specified event -->
+
+          <!-- Add Friend Tab -->
+          <div class="tab-content" ng-show="tab === 1">
+            <h1>
+              {{selectedEvent.title}} <strong>in Friend tab </strong>
+            <h1>
+          </div>
+
+          <!-- To do Tab == 2-->
+          <to-do-tab></to-do-tab>
+
+          <!-- Completed List tab === 3-->
+          <completed-tab></completed-tab>
+
+        </div>
+      </div>
+
+    </div><!-- container-fluid -->
+  </div><!-- page-content-wrapper -->
+
+</div><!-- wrapper -->

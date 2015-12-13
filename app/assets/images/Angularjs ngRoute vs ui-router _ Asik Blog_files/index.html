@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://www.amasik.com/demo/angularjs/uiRouter-vs-ngroute/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+table{border-collapse:collapse}
+
+table tr:nth-child(2n+1){background-color:#f1f1f1}
+
+table tr:nth-child(2n){background-color:#ffffff}
+
+table th{
+background-color:#555;
+border:1px solid #555;
+color:#fff;
+padding:3px;
+text-align:left;
+vertical-align:top;
+}
+
+table td{
+border:1px solid #555;
+padding:7px 5px;
+text-align:left;
+vertical-align:top;
+}
+
+.bgYellow{background-color:yellow}
+
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+<tbody><tr>
+	<th></th>
+	<th>ui-router</th>
+	<th>ngRoute</th>	
+</tr>
+<tr>			
+<td class="bgYellow">Common Factors</td><td></td><td></td>
+</tr>
+<tr>
+<td>Module name (dependent module)</td>
+<td>ui.router <br><br>(eg) angular.module('app', ['ui.router']);</td>
+<td>ngRoute <br><br> (eg) angular.module('app', ['ngRoute']);</td>
+</tr>
+
+<tr>
+<td>Router provider</td>
+<td>$stateProvider<br>$urlRouterProvider</td>
+<td>$routeProvider</td>
+</tr>
+		
+
+<tr>
+<td>Simple Syntax</td>
+<td>
+<pre style="font-size:10px;">		
+$stateProvider.state('customersState', {
+  url: '/customers',
+  template: 'My Customers'
+})
+</pre>
+</td>
+<td>
+<pre style="font-size:10px;">$routeProvider.when('/customers', {
+    template: 'My Customers'
+});
+</pre>
+</td>
+</tr>
+
+
+<tr>
+<td>Template view directive</td>
+<td>ui-view</td>
+<td>ng-view</td>
+</tr>
+		
+		
+
+<tr>
+<td>Template named view directive</td>
+<td>ui-view="customers"</td>
+<td>---</td>
+</tr>
+
+<tr>
+<td>Link directive</td>
+<td>
+ui-sref=""<br><br>
+(eg)
+<pre style="font-size:10px;">&lt;a ui-sref="customersState"&gt; Customers &lt;/a&gt;</pre>
+</td>
+<td>
+href=""<br><br>
+(eg)
+<pre style="font-size:10px;">&lt;a href="#/customers"&gt; Customers &lt;/a&gt;</pre>
+</td>
+</tr>
+		
+
+<tr>
+<td class="bgYellow">Params</td>
+<td></td>
+<td></td>
+</tr>
+		
+<tr>
+<td>Getting Params (as a service)</td>
+<td>
+$state<br>
+(eg) $state.params.id<br><br>
+$staetParams<br>
+(eg) $stateParams.id
+</td>
+<td>
+$route<br>
+(eg) $route.current.params.id<br><br>
+$routeParams<br>
+(eg) $routeParams.id
+</td>
+</tr>
+		
+
+<tr>
+<td class="bgYellow">Events</td>
+<td></td>
+<td></td>
+</tr>
+		
+<tr>
+<td>Router start event</td>
+<td>$stateChangeStart</td>
+<td>$routeChangeStart</td>
+</tr>
+	
+		
+
+<tr>
+<td>Router success event</td>
+<td>$stateChangeSuccess</td>
+<td>$routeChangeSuccess</td>
+</tr>		
+		
+
+<tr>
+<td>Router error event</td>
+<td>$stateChangeError</td>
+<td>$routeChangeError</td>
+</tr>		
+		
+
+<tr>
+<td>Router update event</td>
+<td>---</td>
+<td>$routeUpdate</td>
+</tr>	
+
+<tr>
+<td>Router not found event</td>
+<td>$stateNotFound</td>
+<td>---</td>
+</tr>		
+
+<tr>
+<td class="bgYellow">Default View</td>
+<td></td>
+<td></td>
+</tr>
+		
+	
+
+<tr>
+<td>Default View</td>
+<td>$urlRouterProvider.otherwise('/customers');</td>
+<td>$routeProvider.otherwise({redirectTo: '/customers'});</td>
+</tr>
+	
+		
+		
+<tr>
+<td class="bgYellow">Methods</td>
+<td></td>
+<td></td>
+</tr>
+
+		
+
+<tr>
+<td>One view to another view</td>
+<td>$state.go('customersState');</td>
+<td>$location.path( "/customers" );</td>
+</tr>
+		
+		
+	
+<tr>
+<td>One view to another view with params</td>
+<td>$state.go('customersState', {id:'123'});</td>
+<td>$location.path( "/customer/123" );</td>
+</tr>
+	
+</tbody>
+</table>
+
+
+
+</body></html>

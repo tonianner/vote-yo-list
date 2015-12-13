@@ -12,6 +12,23 @@
 //
 //= require jquery
 //= require jquery_ujs
+
 //= require angular/angular.min
+//= require angular-resource/angular-resource.min
+//= require angular-cookie/angular-cookie
+//= require angular-cookies/angular-cookies
 //= require angular-ui-router/release/angular-ui-router
+
+//= require bootstrap/dist/js/bootstrap.min
+//= require angular-animate/angular-animate.min
+//= require wow/dist/wow.min
+
+//= require angular-xeditable/dist/js/xeditable.min
+
+//= require angular-bootstrap/ui-bootstrap-tpls.min
+//= require angularjs-datepicker/dist/angular-datepicker.min
+
+//= require ng-token-auth/dist/ng-token-auth
+
 //= require_tree .
+//= require_self

@@ -1,0 +1,79 @@
+<div class="tab-content" ng-show="tab === 2" ng-click='getId(selectedEvent.id)'>
+  <br>
+  <div class="col-lg-6">
+    <form class="input-group" ng-submit="addTask()">
+      <input type="text"
+             class="form-control"
+             placeholder="Add Task in Event: '{{ selectedEvent.title }}'"
+             ng-model="newTask.title"
+             name="newTask[title]">
+      <span class="input-group-btn">
+      <button class="btn btn-default" type="submit">Add Task!</button>
+      </span>
+    </form><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+
+  <!-- Search:<input ng-model="query" type="text"/> -->
+
+  <br>
+  <br>
+
+  <table class="table table-bordered table-hover table-condensed">
+    <tr style="font-weight: bold">
+      <!-- table header -->
+      <th></th> <!-- No header for checkbox-->
+      <th>
+        <a href="" ng-click="sortField ='title'; reverse = !reverse">Title</a>
+      </th>
+      <th>
+        <a href="" ng-click="sortField ='description'; reverse = !reverse">Description
+      </th>
+      <th style="width:20%">
+        <a href="" ng-click="sortField ='description'; reverse = !reverse">Due on
+      </th>
+      <th style="width:20%">
+        <a href="" ng-click="sortField ='description'; reverse = !reverse">Assigned to
+      </th>
+      <th style="width:5%">Delete</th>
+    </tr>
+
+    <!-- table content -->
+    <tr ng-repeat="task in remainingTasks() | filter:query | orderBy:sortField:reverse">
+      <td>
+        <input class="checkbox"
+               type="checkbox"
+               ng-model="task.completed"
+               ng-change="updateTaskCompleted(task, task.id)">
+      </td>
+      <td>
+        <a href="#"
+          onbeforesave="updateTask(task.id, $data)"
+          editable-textarea="task.title"
+          name="task[title]"
+          ng-class="{completed: task.completed}"
+          e-required
+          e-style="color: green">{{ (task.title || 'empty') | uppercase}}</a>
+        <p>created on: {{ task.created_at | date:'medium' }} </p>
+        <p>from {{ user.email }} </p>
+        </span>
+      </td>
+      <td>
+        <a href="#"
+          onbeforesave="updateTaskDescrip(task.id, $data)"
+          editable-textarea="task.description"
+          name="task[description]"
+          e-style="color: green">{{ task.description || 'empty'}}</a>
+      </td>
+      <td>
+        Due on
+      </td>
+      <td>
+        Assigned to
+      </td>
+      <td>
+        <button class="btn btn-danger"ng-click="deleteTask(task.id)">del</button>
+      </td>
+    </tr>
+  </table>
+
+</div>
