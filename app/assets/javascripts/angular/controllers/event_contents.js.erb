@@ -14,7 +14,7 @@ function DashBoardCtrl(EventFactory, $scope, $stateParams) {
   // Index >> Get All
   $scope.allEvents = EventList.query();
 
-  // Create New Event
+  // Blank new Event for Form >> Create Event
   $scope.newEvent = {};
 
   // Show selected content
@@ -28,7 +28,7 @@ function DashBoardCtrl(EventFactory, $scope, $stateParams) {
     });
   };
 
-  // Update event >> Working but need to refresh for event list
+  // Update event >> ** Working but need to refresh for event list **
   $scope.updateEvent = function(data) {
     $scope.selectedEvent.title = data
     $scope.selectedEvent.$update({id: $stateParams.id})

@@ -18,7 +18,19 @@
   </h1>
   <ul>
     <li ng-repeat="task in allTasks">
-      {{ task.title}}
+
+      <a href="#"
+        onbeforesave="updateTask(task.id, $data)"
+        editable-text="task.title"
+        name="task[title]">{{ task.title}}</a>
+<!--         <ul>
+          <li>
+            <a href="#"
+            onbeforesave="updateTask(task.id, $data)"
+            editable-text="task.description"
+            name="task[description]">{{ task.description}}</a>
+          </li>
+        </ul> -->
       <button ng-click="deleteTask(task.id)">x</button>
     </li>
   </ul>

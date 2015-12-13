@@ -10,17 +10,41 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
   // Show all task in selected event
   $scope.allTasks = ToDoList.query({eventId: $stateParams.id})
 
-  // Create New Event
+  // Blank new Task for Form >> Create Task & Update Task
   $scope.newTask = {};
 
-  $scope.addTask = function() {
-    console.log('click')
+  // Show selected Task
+  // $scope.selectedTask = ToDoList.get({eventId: $stateParams.id})
 
+  // Create New Event
+  $scope.addTask = function() {
     ToDoList.save({eventId: $stateParams.id}, $scope.newTask, function(newTask) {
       $scope.allTasks.push(newTask);
       $scope.newTask = {}
     });
   };
+
+
+  $scope.updateTask = function(id, data) {
+    console.log('click')
+    // console.log($stateParams.id)
+    // console.log(id)
+    // console.log(data)
+
+    // Returns promise >> {$promise: c, $resolved: false}
+    $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: id})
+    console.log($scope.selectedTask)
+
+    ToDoList.update({eventId: $stateParams.id, id: id},
+      function (){
+        // returns object >> {id: 41, title: "title here"...}
+        $scope.selectedTask.title = data
+        // to update /api/event/eventId/tasks/id
+        $scope.selectedTask.$update({eventId: $stateParams.id, id: id})
+
+      }
+    )
+  }
 
   // Delete Task
   $scope.deleteTask= function(id) {
