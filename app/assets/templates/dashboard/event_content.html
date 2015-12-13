@@ -8,21 +8,38 @@
     <div class="container-fluid">
 
         <!-- http://vitalets.github.io/angular-xeditable/#onbeforesave -->
-      <div>
+      <section>
         <h1>You are in Current event:
           <a href="#"
              onbeforesave="updateEvent($data)"
              editable-text="selectedEvent.title"
-             name="event[title]">{{ selectedEvent.title}}</a>
+             name="event[title]">{{ selectedEvent.title || 'empty'}}</a>
         </h1>
 
+        <!-- https://github.com/720kb/angular-datepicker#angular-datepicker -->
+        <form ng-submit="updateEventDate()">
+          <datepicker date-format="yyyy-MM-dd" selector="form-control" class="col-sm-4">
+            <p>Due Date:</p>
+            <div class="input-group">
+                <span class="input-group-addon" style="cursor: pointer"><i class="fa fa-lg fa-calendar"></i></span>
+                <input class="form-control"
+                       placeholder="{{ selectedEvent.due_date }}"
+                       ng-model="selectedEvent.due_date"
+                       />
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit">Save!</button>
+                </span>
+            </div>
+          </datepicker>
+        </form>
+      </section>
 
-      </div>
 
+      <br>
       <br>
 
       <!-- Content per Event -->
-      <div class="row">
+      <div class="row" id="content-event">
         <div class="col-lg-12" ng-init="tab = 1">
           <!-- Tab Navigation per Event -->
           <ul class="nav nav-tabs">

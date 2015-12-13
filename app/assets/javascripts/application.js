@@ -25,6 +25,9 @@
 
 //= require angular-xeditable/dist/js/xeditable.min
 
+//= require angular-bootstrap/ui-bootstrap-tpls.min
+//= require angularjs-datepicker/dist/angular-datepicker.min
+
 //= require ng-token-auth/dist/ng-token-auth
 
 //= require_tree .

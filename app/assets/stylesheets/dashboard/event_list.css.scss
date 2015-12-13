@@ -19,6 +19,10 @@
     width: 100%;
     padding: 20px;
     position: relative;
+
+    #content-event {
+      margin-top: 53px;
+    }
   }
 
   /* Sidebar Styles */
@@ -54,6 +58,7 @@
 
     li > span > button {
       margin-top: -31px;
+      margin-right: 8px;
     }
 
     .sidebar-brand {
