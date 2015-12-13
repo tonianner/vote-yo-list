@@ -1,20 +1,24 @@
+// directive >> event_list.js.erb
+// _angular_confit.js.erb >> .state >> url: '/events/:id'
+
 app.controller("EventCtrl", DashBoardCtrl)
 
-DashBoardCtrl.$inject = ['ToDoFactory', 'EventFactory', '$scope', '$stateParams']
+DashBoardCtrl.$inject = ['EventFactory', '$scope', '$stateParams']
 
-function DashBoardCtrl(ToDoFactory, EventFactory, $scope, $stateParams) {
+function DashBoardCtrl(EventFactory, $scope, $stateParams) {
+  console.log('Dash Board Ctrl')
 
   // EVENTS //
   var EventList = EventFactory;
 
-  // New Event
-  $scope.newEvent = {};
-
-  $scope.selectedEvent = {};
-
-  // Index
+  // Index >> Get All
   $scope.allEvents = EventList.query();
 
+  // Create New Event
+  $scope.newEvent = {};
+
+  // Show selected content
+  $scope.selectedEvent = EventList.get({id: $stateParams.id})
 
   // Create event
   $scope.addEvent = function() {
@@ -27,7 +31,7 @@ function DashBoardCtrl(ToDoFactory, EventFactory, $scope, $stateParams) {
   // Update event >> Working but need to refresh for event list
   $scope.updateEvent = function(data) {
     $scope.selectedEvent.title = data
-    $scope.selectedEvent.$update({id: $scope.selectedEvent.id})
+    $scope.selectedEvent.$update({id: $stateParams.id})
   }
 
   // Delete
@@ -36,24 +40,4 @@ function DashBoardCtrl(ToDoFactory, EventFactory, $scope, $stateParams) {
     var index = $scope.allEvents.indexOf(event);
     $scope.allEvents.splice(index, 1);
   }
-
-
-  // Show one event and show todo tasks in the event
-  $scope.selectEvent = function(id) {
-    $scope.selectedEvent = EventList.get({id: id})
-
-    $scope.eventId = id
-
-    var TaskLists = ToDoFactory
-
-    // Show TASKS in selected event
-    $scope.allTasks = TaskLists.query({eventId: $scope.eventId})
-
-    // Delete Task
-    $scope.deleteTask= function(id) {
-      TaskLists.delete({eventId: $scope.eventId, id: id});
-      var index = $scope.allTasks.indexOf(event);
-      $scope.allTasks.splice(index, 1);
-    }
-  };
 }

@@ -1,6 +1,7 @@
 app.directive('eventList', function (){
   return {
     restrict: 'E',
-    templateUrl: "<%= asset_path('dashboard/event_list.html')%>"
+    templateUrl: "<%= asset_path('dashboard/event_list.html')%>",
+    controller: 'EventCtrl'
   }
 })

@@ -1,21 +1,21 @@
 app.controller("ToDoCtrl", ToDoCtrl)
 
-ToDoCtrl.$inject = ['ToDoFactory', 'EventFactory','$scope', '$stateParams']
+ToDoCtrl.$inject = ['ToDoFactory', '$scope', '$stateParams']
 
-function ToDoCtrl(ToDoFactory,EventFactory, $scope, $stateParams) {
-
-  $scope.selectedEventId = {}
-
-  $scope.getId = function(id) {
-    $scope.selectedEventId = EventFactory.get({id: id})
-  }
+function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
+  console.log('To Do Controller')
 
   var ToDoList = ToDoFactory;
-  // Index
-  $scope.allTasks = ToDoList.get({eventId: $scope.eventId},
-    function(){
-      ToDoList.query({id: id})
-    }
-  )
+
+  // Show all task in selected event
+  $scope.allTasks = ToDoList.query({eventId: $stateParams.id})
+
+  // Delete Task
+  $scope.deleteTask= function(id) {
+    ToDoList.delete({eventId: $stateParams.id, id: id});
+    var index = $scope.allTasks.indexOf(event);
+    $scope.allTasks.splice(index, 1);
+  }
+
 
 }

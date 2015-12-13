@@ -24,9 +24,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
         templateUrl: "<%= asset_path('auth/login.html')%>",
         controller: 'LogInCtrl'
       })
-      .state('event', {
+      .state('dashboard', {
         url: '/events',
         templateUrl: "<%= asset_path('dashboard/index.html')%>",
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      })
+      .state('eventContent', {
+        url: '/events/:id',
+        templateUrl: "<%= asset_path('dashboard/event_content.html')%>",
         controller: 'EventCtrl',
         resolve: {
           auth: function($auth) {
