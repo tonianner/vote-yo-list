@@ -14,13 +14,14 @@
           </span>
         </form><!-- /input-group -->
       </div><!-- /.col-lg-6 -->
-    </div><!-- /.row -->
+   </div><!-- /.row -->
     <li>
       <a><strong ng-bind="newEvent.title"></strong></a>
     </li>
     <li ng-repeat="event in allEvents | orderBy:'title'">
-      <a href="#/events/{{event.id}}"><strong>{{event.title}}</strong></a>
-      <span><button class="btn btn-danger btn-xs pull-right" ng-click="deleteEvent(event)">X</button></span>
+      <a href="#/events/{{event.id}}">
+        <strong>{{event.title}}</strong></a>
+        <span><button class="btn btn-danger btn-xs pull-right" ng-click="deleteEvent(event)">X</button></span>
     </li>
   </ul>
 </div>

@@ -8,10 +8,15 @@
     <div class="container-fluid">
 
         <!-- http://vitalets.github.io/angular-xeditable/#onbeforesave -->
-
       <div>
-        <h1>You are in Current event: <a href="#" onbeforesave="updateEvent($data)" editable-text="selectedEvent.title" name="event[title]">{{ selectedEvent.title}}</a>
+        <h1>You are in Current event:
+          <a href="#"
+             onbeforesave="updateEvent($data)"
+             editable-text="selectedEvent.title"
+             name="event[title]">{{ selectedEvent.title}}</a>
         </h1>
+
+
       </div>
 
       <br>
