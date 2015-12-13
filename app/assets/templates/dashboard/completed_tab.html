@@ -1,22 +1,5 @@
-<div class="tab-content" ng-show="tab === 2" ng-click='getId(selectedEvent.id)'>
-  <br>
-  <div class="col-lg-6">
-    <form class="input-group" ng-submit="addTask()">
-      <input type="text"
-             class="form-control"
-             placeholder="Add Task in Event: '{{ selectedEvent.title }}'"
-             ng-model="newTask.title"
-             name="newTask[title]">
-      <span class="input-group-btn">
-      <button class="btn btn-default" type="submit">Add Task!</button>
-      </span>
-    </form><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-
-  <!-- Search:<input ng-model="query" type="text"/> -->
-
-  <br>
-  <br>
+<div class="tab-content" ng-show="tab === 3">
+  <h1> Completed List </h1>
 
   <table class="table table-bordered table-hover table-condensed">
     <tr style="font-weight: bold">
@@ -38,7 +21,7 @@
     </tr>
 
     <!-- table content -->
-    <tr ng-repeat="task in remainingTasks() | filter:query | orderBy:sortField:reverse">
+    <tr ng-repeat="task in completedTasks() | filter:query | orderBy:sortField:reverse">
       <td>
         <input class="checkbox"
                type="checkbox"
@@ -46,15 +29,7 @@
                ng-change="updateTaskCompleted(task, task.id)">
       </td>
       <td>
-        <a href="#"
-          onbeforesave="updateTask(task.id, $data)"
-          editable-textarea="task.title"
-          name="task[title]"
-          ng-class="{completed: task.completed}"
-          e-required
-          e-style="color: green">{{ (task.title || 'empty') | uppercase}}</a>
-        <p>created on: {{ task.created_at | date:'medium' }} </p>
-        <p>from {{ user.email }} </p>
+        <p ng-class="{completed: task.completed}">{{ task.title || 'Input task title yet'}}</p>
         </span>
       </td>
       <td>
@@ -62,7 +37,9 @@
           onbeforesave="updateTaskDescrip(task.id, $data)"
           editable-textarea="task.description"
           name="task[description]"
-          e-style="color: green">{{ task.description || 'empty'}}</a>
+          e-style="color: red">{{ task.description || 'no description yet'}}</a>
+        <p>created on: {{ task.created_at | date:'medium' }} </p>
+        <p>from {{ user.email }} </p>
       </td>
       <td>
         Due on
@@ -75,5 +52,4 @@
       </td>
     </tr>
   </table>
-
 </div>

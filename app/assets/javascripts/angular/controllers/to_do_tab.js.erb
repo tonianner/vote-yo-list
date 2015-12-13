@@ -7,7 +7,7 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
 
   var ToDoList = ToDoFactory;
 
-  // Show all task in selected event
+  // Get all task in selected event
   $scope.allTasks = ToDoList.query({eventId: $stateParams.id})
 
   // Blank new Task for Form >> Create Task & Update Task
@@ -16,6 +16,20 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
   // Show selected Task
   // $scope.selectedTask = ToDoList.get({eventId: $stateParams.id})
 
+  // Show all Tasks not completed
+  $scope.remainingTasks = function (){
+    return $scope.allTasks.filter(function(x){
+      return x.completed === null || x.completed === false;
+    })
+  }
+
+  // Show all Tasks not completed
+  $scope.completedTasks = function (){
+    return $scope.allTasks.filter(function(x){
+      return x.completed === true;
+    })
+  }
+
   // Create New Event
   $scope.addTask = function() {
     ToDoList.save({eventId: $stateParams.id}, $scope.newTask, function(newTask) {
@@ -23,7 +37,6 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
       $scope.newTask = {}
     });
   };
-
 
   $scope.updateTask = function(id, data) {
     // Returns promise >> {$promise: c, $resolved: false}
@@ -43,10 +56,17 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     $scope.selectedTask.$update({eventId: $stateParams.id, id: id})
   }
 
+  $scope.updateTaskCompleted = function (task, id){
+    $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: id})
+    $scope.selectedTask.completed = task.completed
+    $scope.selectedTask.$update({eventId: $stateParams.id, id: id})
+  }
+
   // Delete Task
   $scope.deleteTask= function(id) {
     ToDoList.delete({eventId: $stateParams.id, id: id});
     var index = $scope.allTasks.indexOf(id);
     $scope.allTasks.splice(index, 1);
   }
+
 }
