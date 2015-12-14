@@ -26,19 +26,33 @@ function locationCtrl(LocationFactory, $scope, $stateParams) {
     $scope.allLocations.splice(index, 1);
   }
 
-  $scope.selectedVote.votes = 0;
 
   $scope.upVote = function (place) {
     $scope.selectedVote = LocationList.get({eventId: $stateParams.id, id: place.id})
+
+    if ($scope.selectedVote.votes == null) {
+      $scope.selectedVote.votes = 0
+    }
+
     $scope.selectedVote.votes = place.votes++
+    $scope.selectedVote.votes++
+
     $scope.selectedVote.$update({eventId: $stateParams.id, id: place.id})
-    console.log($scope.selectedVote.votes )
+
   }
 
-  $scope.downVote = function () {
-    // $scope.vote--;
+  $scope.downVote = function (place) {
+    $scope.selectedVote = LocationList.get({eventId: $stateParams.id, id: place.id})
+
+    if ($scope.selectedVote.votes == null) {
+      $scope.selectedVote.votes = 0
+    }
+
+    $scope.selectedVote.votes = place.votes--
+    $scope.selectedVote.votes--
+
+    $scope.selectedVote.$update({eventId: $stateParams.id, id: place.id})
   }
 
-  // $scope.vote = 0;
 
 }

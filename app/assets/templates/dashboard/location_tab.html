@@ -20,12 +20,15 @@
   </thead>
   <tbody>
     <tr ng-repeat="place in allLocations | filter:query | orderBy:sortField:reverse">
-      <td>{{ place.place_name }}</td>
+      <td>
+      <button class="btn btn-warning btn-xs pull-right" ng-click="deleteLocation(place.id)">X</button>
+      {{ place.place_name }}
+      </td>
       <td>
         <i title="Up Votes" ng-click="upVote(place)" class="fa fa-arrow-circle-up fa-2x" style='cursor:pointer'></i>
         <br/>
-        <i title="Down Votes" ng-click="downVote()" class="fa fa-arrow-circle-down fa-2x" style='cursor:pointer'></i>
-        <br/>Number Of Votes: {{vote}}</div>
+        <i title="Down Votes" ng-click="downVote(place)" class="fa fa-arrow-circle-down fa-2x" style='cursor:pointer'></i>
+        <br/>Number Of Votes: {{place.votes}}</div>
       </td>
     </tr>
     <tr>
