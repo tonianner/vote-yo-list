@@ -56,18 +56,21 @@
 
           <!-- Content per tab in specified event -->
 
-          <!-- Add Friend Tab -->
+          <!-- Add Friend Tab == 1-->
           <div class="tab-content" ng-show="tab === 1">
-            <h1>
-              {{selectedEvent.title}} <strong>in Friend tab </strong>
-            <h1>
+            <add-friend-tab></add-friend-tab>
           </div>
 
-          <!-- To do Tab == 2-->
-          <to-do-tab></to-do-tab>
 
+          <!-- To do Tab == 2-->
+          <div class="tab-content" ng-show="tab === 2">
+            <to-do-tab></to-do-tab>
+          </div>
+
+          <div class="tab-content" ng-show="tab === 3">
           <!-- Completed List tab === 3-->
-          <completed-tab></completed-tab>
+            <completed-tab></completed-tab>
+          </div>
 
         </div>
       </div>

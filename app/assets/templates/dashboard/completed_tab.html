@@ -1,7 +1,7 @@
-<div class="tab-content" ng-show="tab === 3">
-  <h1> Completed List </h1>
+<h1> Completed List </h1>
 
-  <table class="table table-bordered table-hover table-condensed">
+<table class="table table-bordered table-hover table-condensed">
+  <thead>
     <tr style="font-weight: bold">
       <!-- table header -->
       <th></th> <!-- No header for checkbox-->
@@ -19,7 +19,9 @@
       </th>
       <th style="width:5%">Delete</th>
     </tr>
+  </thead>
 
+  <tbody>
     <!-- table content -->
     <tr ng-repeat="task in completedTasks() | filter:query | orderBy:sortField:reverse">
       <td>
@@ -51,5 +53,5 @@
         <button class="btn btn-danger"ng-click="deleteTask(task.id)">del</button>
       </td>
     </tr>
-  </table>
-</div>
+  </tbody>
+</table>

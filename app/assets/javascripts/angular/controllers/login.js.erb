@@ -15,6 +15,7 @@ app.controller('LogInCtrl', [
          // alert
         $rootScope.$on('auth:login-error', function(ev, reason) {
           $scope.errorMessageLogIn = reason.errors[0]
+          console.log(reason)
         });
       };
     }
