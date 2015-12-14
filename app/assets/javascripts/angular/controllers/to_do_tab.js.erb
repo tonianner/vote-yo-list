@@ -30,7 +30,7 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     })
   }
 
-  // Create New Event
+  // Create New Task
   $scope.addTask = function() {
     ToDoList.save({eventId: $stateParams.id}, $scope.newTask, function(newTask) {
       $scope.allTasks.push(newTask);
@@ -38,6 +38,7 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     });
   };
 
+  // Update Task
   $scope.updateTask = function(id, data) {
     // Returns promise >> {$promise: c, $resolved: false}
     $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: id})

@@ -53,7 +53,7 @@ module API
     end
 
     def location_params
-      params.require(:location).permit(:place_name)
+      params.require(:location).permit(:place_name, :votes)
     end
 
   end

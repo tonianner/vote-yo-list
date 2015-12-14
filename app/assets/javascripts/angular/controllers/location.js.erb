@@ -1,0 +1,44 @@
+app.controller('locationCtrl',locationCtrl)
+
+locationCtrl.$inject = ['LocationFactory', '$scope', '$stateParams']
+
+function locationCtrl(LocationFactory, $scope, $stateParams) {
+  console.log('Location Controller')
+
+  var LocationList = LocationFactory
+
+  $scope.allLocations = LocationList.query({eventId: $stateParams.id})
+
+  $scope.newPlace = {};
+
+  // Create Location
+  $scope.addLocation = function() {
+    LocationList.save({eventId: $stateParams.id}, $scope.newPlace, function(newPlace) {
+      $scope.allLocations.push(newPlace);
+      $scope.newPlace = {}
+    });
+  };
+
+  // Delete Task
+  $scope.deleteLocation= function(id) {
+    LocationList.delete({eventId: $stateParams.id, id: id});
+    var index = $scope.allLocations.indexOf(id);
+    $scope.allLocations.splice(index, 1);
+  }
+
+  $scope.selectedVote.votes = 0;
+
+  $scope.upVote = function (place) {
+    $scope.selectedVote = LocationList.get({eventId: $stateParams.id, id: place.id})
+    $scope.selectedVote.votes = place.votes++
+    $scope.selectedVote.$update({eventId: $stateParams.id, id: place.id})
+    console.log($scope.selectedVote.votes )
+  }
+
+  $scope.downVote = function () {
+    // $scope.vote--;
+  }
+
+  // $scope.vote = 0;
+
+}

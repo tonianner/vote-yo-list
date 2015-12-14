@@ -52,6 +52,9 @@
             <li ng-class="{active:tab === 3}">
               <a data-toggle="tab" ng-click="tab = 3">Completed List</a>
             </li>
+            <li ng-class="{active:tab === 4}">
+              <a data-toggle="tab" ng-click="tab = 4">Location Vote</a>
+            </li>
           </ul>
 
           <!-- Content per tab in specified event -->
@@ -67,9 +70,14 @@
             <to-do-tab></to-do-tab>
           </div>
 
-          <div class="tab-content" ng-show="tab === 3">
           <!-- Completed List tab === 3-->
+          <div class="tab-content" ng-show="tab === 3">
             <completed-tab></completed-tab>
+          </div>
+
+          <!-- Completed List tab === 3-->
+          <div class="tab-content" ng-show="tab === 4">
+            <location-tab></location-tab>
           </div>
 
         </div>
