@@ -11,7 +11,9 @@ module API
     end
 
     def show
-      render json: @event.users.find(params[:id])
+      # render json: @event.users.find(params[:id])
+      @user = @event.users.find(params[:id])
+      render 'show.json.jbuilder'
     end
 
     private
