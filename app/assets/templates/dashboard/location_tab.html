@@ -1,4 +1,5 @@
-<h1> vote for your location </h1>
+<h1> Location with highest votes : <strong> Show location</strong>
+</h1>
 
 <form class="input-group" ng-submit="addLocation()">
   <input type="text"
@@ -10,7 +11,8 @@
   <button class="btn btn-default" type="submit">Add Location!</button>
   </span>
 </form><!-- /input-group -->
-
+<br>
+<br>
 <table class="table table-bordered table-hover table-condensed">
   <thead>
     <tr>
@@ -30,9 +32,6 @@
         <i title="Down Votes" ng-click="downVote(place)" class="fa fa-arrow-circle-down fa-2x" style='cursor:pointer'></i>
         <br/>Number Of Votes: {{place.votes}}</div>
       </td>
-    </tr>
-    <tr>
-      votes
     </tr>
   </tbody>
 </table>
