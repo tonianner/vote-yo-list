@@ -17,6 +17,10 @@ module API
 
     def show
       render json: @event
+      # render :json => {
+      #   :user => @event.users,
+      #   :event => @event
+      # }
     end
 
     def create

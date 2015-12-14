@@ -1,14 +1,14 @@
 module API
   class UsersController < ApplicationController
 
-    before_action :set_user
+    before_action :set_event
 
     def index
-      render json: User.all
+      render json: @event.users
     end
 
     def show
-      render json: @user
+      render json: @event.users.find(params[:id])
     end
 
     private
@@ -16,8 +16,8 @@ module API
       params.require(:user).permit(:nickname, :email)
     end
 
-    def set_user
-      @user = User.find_by(id: params[:id])
+    def set_event
+      @event = Event.find_by(id: params[:event_id])
     end
 
   end

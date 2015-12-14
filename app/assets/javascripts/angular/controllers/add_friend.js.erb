@@ -1,0 +1,13 @@
+app.controller("FriendCtrl", FriendCtrl)
+
+FriendCtrl.$inject = ['FriendFactory', '$scope', '$stateParams']
+
+function FriendCtrl(FriendFactory, $scope, $stateParams) {
+  console.log('Dash Friend Ctrl')
+
+  var FriendList = FriendFactory
+
+  $scope.allFriends = FriendList.query({eventId: $stateParams.id})
+  console.log($scope.allFriends)
+
+}

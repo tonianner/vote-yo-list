@@ -1,6 +1,7 @@
 app.directive('addFriendTab', function (){
   return {
     restrict: 'E',
-    templateUrl: "<%= asset_path('dashboard/add_friend_tab.html')%>"
+    templateUrl: "<%= asset_path('dashboard/add_friend_tab.html')%>",
+    controller: 'FriendCtrl'
   }
 })

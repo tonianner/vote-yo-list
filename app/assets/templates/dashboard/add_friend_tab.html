@@ -4,6 +4,19 @@
     {{selectedEvent.title}} <strong>in Friend tab </strong>
   </h1>
 
+  <div class="col-lg-4 pull-right">
+    <h3>Invite Users</h3>
+    <form class="input-group">
+      <input type="text"
+             class="form-control"
+             placeholder="Enter email"
+             name="newTask[title]">
+      <span class="input-group-btn">
+      <button class="btn btn-primary" type="submit">Invite</button>
+      </span>
+    </form><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+
   <div class="panel panel-info">
     <div class="panel-body">
       <table class="table table-stripped">
@@ -15,10 +28,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{{ user.email }}</td>
-            <td></td>
-            <td></td>
+          <tr ng-repeat="friend in allFriends">
+            <td> {{ friend.nickname }}</td>
+            <td> {{ friend.email}}</td>
+            <td> {{ friend.status }}</td>
           </tr>
         </tbody>
       </table>
