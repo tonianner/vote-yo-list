@@ -8,6 +8,7 @@ function FriendCtrl(FriendFactory, $scope, $stateParams) {
   var FriendList = FriendFactory
 
   $scope.allFriends = FriendList.query({eventId: $stateParams.id})
-  console.log($scope.allFriends)
+
+  $scope
 
 }

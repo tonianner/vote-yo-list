@@ -66,7 +66,21 @@
           e-style="color: green">{{ task.description || 'empty'}}</a>
       </td>
       <td>
-        Due on
+      <!-- https://github.com/720kb/angular-datepicker#angular-datepicker -->
+      <datepicker date-format="yyyy-MM-dd" selector="form-control" class="col-sm-4">
+        <div class="input-group">
+            <span class="input-group-addon"
+                  style="cursor: pointer">
+              <i class="fa fa-lg fa-calendar"></i>
+            </span>
+            <input class="form-control"
+                   placeholder="{{ task.due_date }}"
+                   ng-model="task.due_date"
+                   ng-change="updateTasktDate(task)"
+                   style="width:120px;"
+                   />
+      </datepicker>
+
       </td>
       <td>
         Assigned to

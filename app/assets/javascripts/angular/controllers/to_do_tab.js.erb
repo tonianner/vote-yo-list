@@ -62,6 +62,13 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     $scope.selectedTask.$update({eventId: $stateParams.id, id: id})
   }
 
+  $scope.updateTasktDate = function(task) {
+    $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: task.id})
+    $scope.selectedTask.due_date = task.due_date
+
+    $scope.selectedTask.$update({eventId: $stateParams.id, id: task.id})
+  }
+
   // Delete Task
   $scope.deleteTask= function(id) {
     ToDoList.delete({eventId: $stateParams.id, id: id});

@@ -28,9 +28,18 @@ function DashBoardCtrl(EventFactory, $scope, $stateParams) {
     });
   };
 
-  // Update event >> ** Working but need to refresh for event list **
-  $scope.updateEvent = function(data) {
-    $scope.selectedEvent.title = data
+  // Update event
+  $scope.updateEvent = function(data, eventId) {
+
+    // To update the Event List after saving it >> $scope.allEvents[0].title = data;
+    angular.forEach($scope.allEvents, function(value, key){
+      if (eventId === value.id) {
+        value.title = data
+      }
+    })
+
+    // To update the selected event with the new data
+    $scope.selectedEvent.title = data;
     $scope.selectedEvent.$update({id: $stateParams.id})
   }
 

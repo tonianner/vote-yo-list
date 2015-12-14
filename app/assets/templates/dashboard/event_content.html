@@ -7,11 +7,11 @@
   <div id="page-content-wrapper">
     <div class="container-fluid">
 
-        <!-- http://vitalets.github.io/angular-xeditable/#onbeforesave -->
+      <!-- http://vitalets.github.io/angular-xeditable/#onbeforesave -->
       <section>
         <h1>You are in Current event:
           <a href="#"
-             onbeforesave="updateEvent($data)"
+             onbeforesave="updateEvent($data, selectedEvent.id)"
              editable-text="selectedEvent.title"
              name="event[title]">{{ selectedEvent.title || 'empty'}}</a>
         </h1>
