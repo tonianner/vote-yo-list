@@ -4,7 +4,10 @@ module API
     before_action :set_event
 
     def index
-      render json: @event.users
+      # render json: @event.users
+      # @user = User.includes(:event).find_by(id: params[:event_id])
+      @event.users
+      render 'index.json.jbuilder'
     end
 
     def show
