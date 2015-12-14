@@ -6,13 +6,16 @@ app.controller('SignUpCtrl', [
       $scope.signup = function () {
         $auth.submitRegistration($scope.registrationForm).
          then(function(resp) {
-           console.log(resp);
            $location.path('/events');
          }).
          catch(function(resp) {
-           console.log(resp.data.errors.full_messages);
+          // $scope.errorMessage = resp.data.errors.full_messages
          });
-        // alert
-      };
+                 // alert
+        $scope.$on('auth:registration-email-error', function(ev, reason) {
+          $scope.errorMessage = reason.errors.full_messages
+          console.log (reason.errors.full_messages)
+        })
+      }
     }
 ])

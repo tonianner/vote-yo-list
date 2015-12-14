@@ -6,16 +6,16 @@ app.controller('LogInCtrl', [
       $scope.login = function () {
         $auth.submitLogin($scope.loginForm).
          then(function(resp) {
-           // handle success response
-           console.log(resp);
            // redirect back to root when registration succesfull
            $location.path('/events');
          }).
          catch(function(resp) {
-           // handle error response
-           console.log(resp.errors);
+           // console.log(resp);
          });
-        // alert
+         // alert
+        $rootScope.$on('auth:login-error', function(ev, reason) {
+          $scope.errorMessageLogIn = reason.errors[0]
+        });
       };
     }
 ])

@@ -1,14 +1,18 @@
 <div class="container">
   <div class="row">
+
+
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
       <form ng-submit="signup()" role="form" ng-init="registrationForm = {}">
         <h2>Register <small> to explore around </small></h2>
+        <div ng-show="errorMessage" class="alert alert-danger" role="alert" ng-repeat="msg in errorMessage">{{ msg}}</div>
         <hr class="auth-colorgraph">
         <!-- Row1: Display Name -->
         <div class="form-group">
           <input type="text"
                  name="display_name"
                  ng-model="registrationForm.nickname"
+                 required="required"
                  class="form-control input-lg"
                  placeholder="Display Name"
                  tabindex="3">
