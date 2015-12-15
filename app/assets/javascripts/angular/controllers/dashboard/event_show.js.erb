@@ -1,9 +1,9 @@
-app.controller("EventCtrl", EventCtrl)
+app.controller("EventShowCtrl", EventShowCtrl)
 
-EventCtrl.$inject = ['EventFactory', '$scope', '$stateParams', '_']
+EventShowCtrl.$inject = ['EventFactory', '$scope', '$stateParams', '_']
 
-function EventCtrl(EventFactory, $scope, $stateParams, _) {
-  console.log("EventCtrl");
+function EventShowCtrl(EventFactory, $scope, $stateParams, _) {
+  console.log("EventShowCtrl");
 
   $scope.selectedEvent = EventFactory.get({id: $stateParams.id})
 

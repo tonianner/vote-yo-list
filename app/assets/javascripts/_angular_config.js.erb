@@ -12,7 +12,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
       .state('home', {
         url: '/',
         templateUrl: "<%= asset_path('static_pages/index.html') %>",
-        controller: 'homeCtrl'
+        controller: 'HomeCtrl'
       })
       .state('signup', {
         url: '/signup',
@@ -35,8 +35,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
       })
       .state('eventsShow', {
         url: '/events/:id',
-        templateUrl: "<%= asset_path('dashboard/show.html')%>",
-        controller: "EventCtrl",
+        templateUrl: "<%= asset_path('dashboard/events_show.html')%>",
+        controller: "EventShowCtrl",
         resolve: {
           auth: function($auth) {
             return $auth.validateUser();

@@ -1,0 +1,8 @@
+app.directive('toDoTab', function (){
+  return {
+    restrict: 'E',
+    templateUrl: "<%= asset_path('dashboard/tabs/to_do_tab.html')%>",
+    // to_do_tab.html & completed_tab.html
+    controller: "ToDoCtrl"
+  }
+})

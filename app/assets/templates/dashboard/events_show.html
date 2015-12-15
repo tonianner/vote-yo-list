@@ -36,13 +36,13 @@
           <!-- Tab Navigation per Event -->
           <ul class="nav nav-tabs">
             <li ng-class="{active:tab === 1}">
-              <a data-toggle="tab" ng-click="tab = 1">Add Friend</a>
+              <a data-toggle="tab" ng-click="tab = 1">To Do List</a>
             </li>
             <li ng-class="{active:tab === 2}">
-              <a data-toggle="tab" ng-click="tab = 2">To Do List</a>
+              <a data-toggle="tab" ng-click="tab = 2">Completed List</a>
             </li>
             <li ng-class="{active:tab === 3}">
-              <a data-toggle="tab" ng-click="tab = 3">Completed List</a>
+              <a data-toggle="tab" ng-click="tab = 3">Add Friend</a>
             </li>
             <li ng-class="{active:tab === 4}">
               <a data-toggle="tab" ng-click="tab = 4">Location Vote</a>
@@ -51,22 +51,22 @@
 
           <!-- Content per tab in specified event -->
 
-          <!-- Add Friend Tab == 1-->
+          <!-- To do Tab-->
           <div class="tab-content" ng-show="tab === 1">
-            <add-friend-tab></add-friend-tab>
-          </div>
-
-          <!-- To do Tab == 2-->
-          <div class="tab-content" ng-show="tab === 2">
             <to-do-tab></to-do-tab>
           </div>
 
-          <!-- Completed List tab === 3-->
-          <div class="tab-content" ng-show="tab === 3">
+          <!-- Completed List Tab-->
+          <div class="tab-content" ng-show="tab === 2">
             <completed-tab></completed-tab>
           </div>
 
-          <!-- Completed List tab === 3-->
+          <!-- Add Friend Tab-->
+          <div class="tab-content" ng-show="tab === 3">
+            <friend-tab></friend-tab>
+          </div>
+
+          <!-- Location Vote Tab-->
           <div class="tab-content" ng-show="tab === 4">
             <location-tab></location-tab>
           </div>

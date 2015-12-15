@@ -10,8 +10,7 @@ app.controller('LogInCtrl', [
            $location.path('/events');
          }).
          catch(function(resp) {
-          console.log(resp.data.errors.full_messages);
-          $scope.errorMessageLogIn = resp.data.errors.full_messages;
+          $scope.errorMessageLogIn = resp.errors;
          });
       };
     }

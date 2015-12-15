@@ -1,0 +1,8 @@
+app.directive('completedTab', function (){
+  return {
+    restrict: 'E',
+    templateUrl: "<%= asset_path('dashboard/tabs/completed_tab.html')%>",
+    // to_do_tab.html & completed_tab.html
+    controller: "ToDoCtrl"
+  }
+})

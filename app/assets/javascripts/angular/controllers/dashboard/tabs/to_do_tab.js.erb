@@ -1,3 +1,4 @@
+// to_do_tab.html & completed_tab.html
 app.controller("ToDoCtrl", ToDoCtrl)
 
 ToDoCtrl.$inject = ['ToDoFactory', '$scope', '$stateParams']
@@ -23,7 +24,7 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     })
   }
 
-  // Show all Tasks not completed
+  // Show all Tasks completed >> completed_tab.html
   $scope.completedTasks = function (){
     return $scope.allTasks.filter(function(x){
       return x.completed === true;
@@ -48,6 +49,7 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     $scope.selectedTask.$update({eventId: $stateParams.id, id: id})
   }
 
+  // Update description after Task is added, default: empty
   $scope.updateTaskDescrip = function(id, data) {
     // Returns promise >> {$promise: c, $resolved: false}
     $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: id})
@@ -57,12 +59,14 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     $scope.selectedTask.$update({eventId: $stateParams.id, id: id})
   }
 
+  // Update if checkbox is ticked
   $scope.updateTaskCompleted = function (task, id){
     $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: id})
     $scope.selectedTask.completed = task.completed
     $scope.selectedTask.$update({eventId: $stateParams.id, id: id})
   }
 
+  // Update if Date after Task is added, default: null when added
   $scope.updateTasktDate = function(task) {
     $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: task.id})
     $scope.selectedTask.due_date = task.due_date
