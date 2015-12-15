@@ -19,10 +19,14 @@
 //= require angular-cookies/angular-cookies
 //= require angular-ui-router/release/angular-ui-router
 
+//= require angular-underscore-module/angular-underscore-module
+//= require underscore/underscore-min
+
 //= require bootstrap/dist/js/bootstrap.min
 //= require angular-animate/angular-animate.min
 //= require wow/dist/wow.min
 
+//= require angular-xeditable/dist/js/xeditable.min
 //= require angular-xeditable/dist/js/xeditable.min
 
 //= require angular-bootstrap/ui-bootstrap-tpls.min

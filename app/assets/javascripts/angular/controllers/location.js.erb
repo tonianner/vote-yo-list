@@ -1,8 +1,8 @@
 app.controller('locationCtrl',locationCtrl)
 
-locationCtrl.$inject = ['LocationFactory', '$scope', '$stateParams']
+locationCtrl.$inject = ['LocationFactory', '$scope', '$stateParams', '_']
 
-function locationCtrl(LocationFactory, $scope, $stateParams) {
+function locationCtrl(LocationFactory, $scope, $stateParams, _) {
   console.log('Location Controller')
 
   var LocationList = LocationFactory
@@ -19,32 +19,40 @@ function locationCtrl(LocationFactory, $scope, $stateParams) {
     });
   };
 
-  // Delete Task
+  // Delete Location
   $scope.deleteLocation= function(id) {
     LocationList.delete({eventId: $stateParams.id, id: id});
     var index = $scope.allLocations.indexOf(id);
     $scope.allLocations.splice(index, 1);
   }
 
-  // $scope.result = []
-  // $scope.highestVotes = function(){
-  //   angular.forEach($scope.allLocations, function(value, key) {
-  //     $scope.result.push(value.votes)
-  //   })
-  //   return $scope.result
-  // }
+  console.log(_.isEmpty($scope.getPlaces))
+  console.log($scope.getPlaces)
 
-  // $scope.max = function () {
-  //   // $scope.allLocations.reduce(function(prev, current){
-  //   //   return (prev > current) ? prev : current
-  //   // })
-  //   angular.forEach($scope.allLocations, function(value, key){
-  //     value.reduce(function(prev,current){
-  //       return (prev.votes > current.votes) ? prev : current
-  //     })
-  //   })
-  // }
+  $scope.getPlaces = LocationList.query({eventId: $stateParams.id})
+    .$promise.then(function(data) {
+      console.log(data)
+      $scope.data = data;
+    });
 
+
+  // $scope.max = _.max($scope.allLocations,
+  //   function(place){
+  //     console.log(place.votes)
+  // });
+
+   //  $scope.user = User.get( {username: 'bob'}  );    // GET
+   //  $scope.user.$promise.then(function(data) {
+   //     console.log(data);
+   // });
+
+  //   var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+  // _.max(stooges, function(stooge){ return stooge.age; });
+  // => {name: 'curly', age: 60};
+
+
+
+  // UpVote button
   $scope.upVote = function (place) {
     $scope.selectedVote = LocationList.get({eventId: $stateParams.id, id: place.id})
 
@@ -59,6 +67,7 @@ function locationCtrl(LocationFactory, $scope, $stateParams) {
 
   }
 
+  // DownVote button
   $scope.downVote = function (place) {
     $scope.selectedVote = LocationList.get({eventId: $stateParams.id, id: place.id})
 

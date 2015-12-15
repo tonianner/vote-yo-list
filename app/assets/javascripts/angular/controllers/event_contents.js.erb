@@ -3,9 +3,9 @@
 
 app.controller("EventCtrl", DashBoardCtrl)
 
-DashBoardCtrl.$inject = ['EventFactory', '$scope', '$stateParams']
+DashBoardCtrl.$inject = ['EventFactory', '$scope', '$stateParams', '_']
 
-function DashBoardCtrl(EventFactory, $scope, $stateParams) {
+function DashBoardCtrl(EventFactory, $scope, $stateParams, _) {
   console.log('Dash Board Ctrl')
 
   // EVENTS //
