@@ -1,0 +1,79 @@
+app.controller("ToDoCtrl", ToDoCtrl)
+
+ToDoCtrl.$inject = ['ToDoFactory', '$scope', '$stateParams']
+
+function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
+  console.log('ToDoCtrl')
+
+  var ToDoList = ToDoFactory;
+
+  // Get all task in selected event
+  $scope.allTasks = ToDoList.query({eventId: $stateParams.id})
+
+  // Blank new Task for Form >> Create Task & Update Task
+  $scope.newTask = {};
+
+  // Show selected Task
+  // $scope.selectedTask = ToDoList.get({eventId: $stateParams.id})
+
+  // Show all Tasks not completed
+  $scope.remainingTasks = function (){
+    return $scope.allTasks.filter(function(x){
+      return x.completed === null || x.completed === false;
+    })
+  }
+
+  // Show all Tasks not completed
+  $scope.completedTasks = function (){
+    return $scope.allTasks.filter(function(x){
+      return x.completed === true;
+    })
+  }
+
+  // Create New Task
+  $scope.addTask = function() {
+    ToDoList.save({eventId: $stateParams.id}, $scope.newTask, function(newTask) {
+      $scope.allTasks.push(newTask);
+      $scope.newTask = {}
+    });
+  };
+
+  // Update Task
+  $scope.updateTask = function(id, data) {
+    // Returns promise >> {$promise: c, $resolved: false}
+    $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: id})
+    // returns object to be updated >> {id: 41, title: "title here"...}
+    $scope.selectedTask.title = data
+    // to update >> /api/event/eventId/tasks/id
+    $scope.selectedTask.$update({eventId: $stateParams.id, id: id})
+  }
+
+  $scope.updateTaskDescrip = function(id, data) {
+    // Returns promise >> {$promise: c, $resolved: false}
+    $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: id})
+    // returns object to be updated >> {id: 41, title: "title here"...}
+    $scope.selectedTask.description = data
+    // to update >> /api/event/eventId/tasks/id
+    $scope.selectedTask.$update({eventId: $stateParams.id, id: id})
+  }
+
+  $scope.updateTaskCompleted = function (task, id){
+    $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: id})
+    $scope.selectedTask.completed = task.completed
+    $scope.selectedTask.$update({eventId: $stateParams.id, id: id})
+  }
+
+  $scope.updateTasktDate = function(task) {
+    $scope.selectedTask = ToDoList.get({eventId: $stateParams.id, id: task.id})
+    $scope.selectedTask.due_date = task.due_date
+
+    $scope.selectedTask.$update({eventId: $stateParams.id, id: task.id})
+  }
+
+  // Delete Task
+  $scope.deleteTask= function(id) {
+    ToDoList.delete({eventId: $stateParams.id, id: id});
+    var index = $scope.allTasks.indexOf(id);
+    $scope.allTasks.splice(index, 1);
+  }
+}

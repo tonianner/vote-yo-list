@@ -1,0 +1,42 @@
+<h1> Location with highest votes : <strong> {{ max }} </strong>
+</h1>
+
+<form class="input-group" ng-submit="addLocation()">
+  <input type="text"
+         class="form-control"
+         placeholder="Add Location in Event: '{{ selectedEvent.title }}'"
+         ng-model="newPlace.place_name"
+         name="newPlace[place_name]">
+  <span class="input-group-btn">
+  <button class="btn btn-default" type="submit">Add Location!</button>
+  </span>
+</form><!-- /input-group -->
+<br>
+<br>
+<table class="table table-bordered table-hover table-condensed">
+  <thead>
+    <tr>
+      <th><a href="" ng-click="sortField ='location'; reverse = !reverse"> Location </a>
+    </th>
+    <th> Votes </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="place in allLocations  | filter:query | orderBy:sortField:reverse">
+      <td>
+      <button class="btn btn-warning btn-xs pull-right" ng-click="deleteLocation(place.id)">X</button>
+      {{ place.place_name }}
+      </td>
+      <td>
+        <i title="Up Votes" ng-click="upVote($index)" class="fa fa-arrow-circle-up fa-2x" style='cursor:pointer'></i>
+        <br/>
+        <i title="Down Votes" ng-click="downVote($index)" class="fa fa-arrow-circle-down fa-2x" style='cursor:pointer'></i>
+        <br/>Number Of Votes: {{place.votes}}</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+

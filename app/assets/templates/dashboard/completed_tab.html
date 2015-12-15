@@ -1,0 +1,54 @@
+<h1> Completed List </h1>
+
+<table class="table table-bordered table-hover table-condensed">
+  <thead>
+    <tr>
+      <!-- table header -->
+      <th></th> <!-- No header for checkbox-->
+      <th>
+        <a href="" ng-click="sortField ='title'; reverse = !reverse">Title</a>
+      </th>
+      <th>
+        <a href="" ng-click="sortField ='description'; reverse = !reverse">Description
+      </th>
+      <th style="width:20%">
+        <a href="" ng-click="sortField ='due_on'; reverse = !reverse">Due on
+      </th>
+      <th style="width:5%">Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <!-- table content -->
+    <tr ng-repeat="task in completedTasks() | filter:query | orderBy:sortField:reverse">
+      <td>
+        <input class="checkbox"
+               type="checkbox"
+               ng-model="task.completed"
+               ng-change="updateTaskCompleted(task, task.id)">
+      </td>
+      <td>
+        <p ng-class="{completed: task.completed}">{{ task.title || 'Input task title yet'}}</p>
+        </span>
+      </td>
+      <td>
+        <a href="#"
+          onbeforesave="updateTaskDescrip(task.id, $data)"
+          editable-textarea="task.description"
+          name="task[description]"
+          e-style="color: red">{{ task.description || 'no description yet'}}</a>
+        <p>created on: {{ task.created_at | date:'medium' }} </p>
+        <p>from {{ user.email }} </p>
+      </td>
+      <td>
+        Due on
+      </td>
+      <td>
+        Assigned to
+      </td>
+      <td>
+        <button class="btn btn-danger"ng-click="deleteTask(task.id)">del</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

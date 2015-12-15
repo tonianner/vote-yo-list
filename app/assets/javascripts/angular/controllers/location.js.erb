@@ -1,0 +1,88 @@
+app.controller('LocationCtrl',locationCtrl)
+
+locationCtrl.$inject = ['LocationFactory', '$scope', '$stateParams', '_', '$http']
+
+function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
+  console.log('LocationCtrl')
+
+  var LocationList = LocationFactory
+
+  $scope.allLocations = LocationList.query({eventId: $stateParams.id})
+
+  $scope.newPlace = {};
+
+  // Create Location
+  $scope.addLocation = function() {
+    LocationList.save({eventId: $stateParams.id}, $scope.newPlace, function(newPlace) {
+      $scope.allLocations.push(newPlace);
+      $scope.newPlace = {}
+    });
+  };
+
+  // Delete Location
+  $scope.deleteLocation= function(id) {
+    LocationList.delete({eventId: $stateParams.id, id: id});
+    var index = $scope.allLocations.indexOf(id);
+    $scope.allLocations.splice(index, 1);
+  }
+
+  console.log(_.isEmpty($scope.getPlaces))
+  console.log($scope.getPlaces)
+
+  $scope.getPlaces = LocationList.query({eventId: $stateParams.id})
+    .$promise.then(function(data) {
+      console.log(data)
+      $scope.data = data;
+    });
+
+
+  // $scope.max = _.max($scope.allLocations,
+  //   function(place){
+  //     console.log(place.votes)
+  // });
+
+   //  $scope.user = User.get( {username: 'bob'}  );    // GET
+   //  $scope.user.$promise.then(function(data) {
+   //     console.log(data);
+   // });
+
+  //   var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+  // _.max(stooges, function(stooge){ return stooge.age; });
+  // => {name: 'curly', age: 60};
+
+
+
+  // UpVote button
+  $scope.upVote = function (index) {
+    console.log()
+
+    if ($scope.allLocations[index] == null) {
+      $scope.allLocations[index] = 0
+    }
+
+    $http({
+      url: 'http://localhost:3000/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
+      method: "PUT",
+      data: {vote: 'upvote'}
+    }).then(function (resp) {
+      console.log(resp);
+      $scope.allLocations[index].votes++;
+    }, function (resp) {
+      console.log(resp);
+    })
+  }
+
+  // DownVote button
+  $scope.downVote = function (place) {
+    $scope.selectedVote = LocationList.get({eventId: $stateParams.id, id: place.id})
+
+    if ($scope.selectedVote.votes == null) {
+      $scope.selectedVote.votes = 0
+    }
+
+    $scope.selectedVote.votes = place.votes--
+    $scope.selectedVote.votes--
+
+    $scope.selectedVote.$update({eventId: $stateParams.id, id: place.id})
+  }
+}

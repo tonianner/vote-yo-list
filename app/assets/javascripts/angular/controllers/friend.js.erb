@@ -1,0 +1,14 @@
+app.controller("FriendCtrl", FriendCtrl)
+
+FriendCtrl.$inject = ['FriendFactory', '$scope', '$stateParams']
+
+function FriendCtrl(FriendFactory, $scope, $stateParams) {
+  console.log('FriendCtrl')
+
+  var FriendList = FriendFactory
+
+  $scope.allFriends = FriendList.query({eventId: $stateParams.id})
+
+  // $scope
+
+}
