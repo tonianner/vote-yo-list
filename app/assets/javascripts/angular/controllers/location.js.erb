@@ -1,9 +1,9 @@
-app.controller('locationCtrl',locationCtrl)
+app.controller('LocationCtrl',locationCtrl)
 
-locationCtrl.$inject = ['LocationFactory', '$scope', '$stateParams', '_']
+locationCtrl.$inject = ['LocationFactory', '$scope', '$stateParams', '_', '$http']
 
-function locationCtrl(LocationFactory, $scope, $stateParams, _) {
-  console.log('Location Controller')
+function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
+  console.log('LocationCtrl')
 
   var LocationList = LocationFactory
 
@@ -53,18 +53,23 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _) {
 
 
   // UpVote button
-  $scope.upVote = function (place) {
-    $scope.selectedVote = LocationList.get({eventId: $stateParams.id, id: place.id})
+  $scope.upVote = function (index) {
+    console.log()
 
-    if ($scope.selectedVote.votes == null) {
-      $scope.selectedVote.votes = 0
+    if ($scope.allLocations[index] == null) {
+      $scope.allLocations[index] = 0
     }
 
-    $scope.selectedVote.votes = place.votes++
-    $scope.selectedVote.votes++
-
-    $scope.selectedVote.$update({eventId: $stateParams.id, id: place.id})
-
+    $http({
+      url: 'http://localhost:3000/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
+      method: "PUT",
+      data: {vote: 'upvote'}
+    }).then(function (resp) {
+      console.log(resp);
+      $scope.allLocations[index].votes++;
+    }, function (resp) {
+      console.log(resp);
+    })
   }
 
   // DownVote button
@@ -80,6 +85,4 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _) {
 
     $scope.selectedVote.$update({eventId: $stateParams.id, id: place.id})
   }
-
-
 }

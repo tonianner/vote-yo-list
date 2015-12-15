@@ -6,40 +6,31 @@ module API
     # Status: 202 accepted
     # Status: 201 created
     # Status: 200 ok
+
     before_action :authenticate_user!
     before_action :set_event, except: [:index, :create]
     # before_action :event_permission!, except: [:create]
 
-    def index
-      eventList = current_user.events
-      render json: eventList
+    def index # requires user
+      render json: current_user.events
     end
 
-    def show
+    def show # requires user
       render json: @event
-      # render :json => {
-      #   :user => @event.users,
-      #   :event => @event
-      # }
     end
 
-    def create
+    def create # requires user
       event = Event.new(event_params)
       event.users << current_user
 
       if event.save
-        render json: event,
-        status: 201,
-        location: [:api, event]
+        render json: event, status: 201
       else
-        render json: event.errors,
-        status: 422,
-        location: [:api, event]
+        render json: event.errors, status: 422
       end
     end
 
-    def update
-      eventList = current_user.events
+    def update # requires user
       if @event.update(event_params)
         render json: @event, status: 202
       else
@@ -47,11 +38,11 @@ module API
       end
     end
 
-    def destroy
+    def destroy # requires user
       if @event.destroy
         head 204
       else
-        render json: @event.erros, status: 422
+        render json: @event.errors, status: 422
       end
     end
 

@@ -19,7 +19,7 @@
       <a><strong ng-bind="newEvent.title"></strong></a>
     </li>
     <li ng-repeat="event in allEvents | orderBy:'created_on'">
-      <a href="#/events/{{event.id}}">
+      <a ui-sref="eventsShow({id: event.id})">
         <strong>{{event.title}}</strong></a>
         <span><button class="btn btn-warning btn-xs pull-right" ng-click="deleteEvent(event)">X</button></span>
     </li>

@@ -1,29 +1,18 @@
 module API
   class UsersController < ApplicationController
-
     before_action :set_event
 
     def index
-      # render json: @event.users
-      # @user = User.includes(:event).find_by(id: params[:event_id])
-      @event.users
+      @users = @event.users
       render 'index.json.jbuilder'
     end
 
-    def show
-      # render json: @event.users.find(params[:id])
-      @user = @event.users.find(params[:id])
-      render 'show.json.jbuilder'
-    end
-
-    private
-    def user_params
-      params.require(:user).permit(:nickname, :email)
-    end
-
+  private
     def set_event
       @event = Event.find_by(id: params[:event_id])
+      if @event.nil?
+        render json: {message: "Event not found"}, status: 404
+      end
     end
-
   end
 end

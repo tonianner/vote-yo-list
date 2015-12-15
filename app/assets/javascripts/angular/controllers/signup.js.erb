@@ -9,13 +9,9 @@ app.controller('SignUpCtrl', [
            $location.path('/events');
          }).
          catch(function(resp) {
-          // $scope.errorMessage = resp.data.errors.full_messages
+          console.log (resp.data.errors.full_messages)
+          $scope.errorMessage = resp.data.errors.full_messages
          });
-                 // alert
-        $scope.$on('auth:registration-email-error', function(ev, reason) {
-          $scope.errorMessage = reason.errors.full_messages
-          console.log (reason.errors.full_messages)
-        })
-      }
+      };
     }
 ])

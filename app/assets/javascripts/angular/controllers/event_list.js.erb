@@ -1,0 +1,37 @@
+// directive >> event_list.js.erb
+// _angular_confit.js.erb >> .state >> url: '/events/:id'
+
+app.controller("EventListCtrl", EventListCtrl)
+
+EventListCtrl.$inject = ['EventFactory', '$scope', '$stateParams', '_']
+
+function EventListCtrl(EventFactory, $scope, $stateParams, _) {
+  console.log('EventListCtrl')
+
+  // EVENTS //
+  var EventList = EventFactory;
+
+  // Index >> Get All
+  $scope.allEvents = EventList.query();
+
+  // Blank new Event for Form >> Create Event
+  $scope.newEvent = {};
+
+  // Create event
+  $scope.addEvent = function() {
+    EventList.save($scope.newEvent, function(newEvent) {
+      console.log(newEvent);
+      $scope.allEvents.push(newEvent);
+      $scope.newEvent = {}
+    }, function (resp) {
+      console.log(resp);
+    });
+  };
+
+  // Delete
+  $scope.deleteEvent = function(event) {
+    EventList.delete({id: event.id});
+    var index = $scope.allEvents.indexOf(event);
+    $scope.allEvents.splice(index, 1);
+  }
+}

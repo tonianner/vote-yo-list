@@ -10,13 +10,9 @@ app.controller('LogInCtrl', [
            $location.path('/events');
          }).
          catch(function(resp) {
-           // console.log(resp);
+          console.log(resp.data.errors.full_messages);
+          $scope.errorMessageLogIn = resp.data.errors.full_messages;
          });
-         // alert
-        $rootScope.$on('auth:login-error', function(ev, reason) {
-          $scope.errorMessageLogIn = reason.errors[0]
-          console.log(reason)
-        });
       };
     }
 ])

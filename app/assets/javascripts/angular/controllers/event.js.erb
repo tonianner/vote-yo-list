@@ -1,0 +1,27 @@
+app.controller("EventCtrl", EventCtrl)
+
+EventCtrl.$inject = ['EventFactory', '$scope', '$stateParams', '_']
+
+function EventCtrl(EventFactory, $scope, $stateParams, _) {
+  console.log("EventCtrl");
+
+  $scope.selectedEvent = EventFactory.get({id: $stateParams.id})
+
+  // Update event
+  $scope.updateEvent = function(data, eventId) {
+    // To update the Event List after saving it >> $scope.allEvents[0].title = data;
+    angular.forEach($scope.allEvents, function(value, key){
+      if (eventId === value.id) {
+        value.title = data
+      }
+    })
+
+    // To update the selected event with the new data
+    $scope.selectedEvent.title = data;
+    $scope.selectedEvent.$update({id: $stateParams.id})
+  }
+
+  $scope.updateEventDate = function(data) {
+    $scope.selectedEvent.$update({id: $stateParams.id})
+  }
+}

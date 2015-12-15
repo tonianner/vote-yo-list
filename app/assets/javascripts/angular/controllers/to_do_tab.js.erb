@@ -3,7 +3,7 @@ app.controller("ToDoCtrl", ToDoCtrl)
 ToDoCtrl.$inject = ['ToDoFactory', '$scope', '$stateParams']
 
 function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
-  console.log('To Do Controller')
+  console.log('ToDoCtrl')
 
   var ToDoList = ToDoFactory;
 
@@ -76,5 +76,4 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     var index = $scope.allTasks.indexOf(id);
     $scope.allTasks.splice(index, 1);
   }
-
 }

@@ -24,7 +24,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
         templateUrl: "<%= asset_path('auth/login.html')%>",
         controller: 'LogInCtrl'
       })
-      .state('dashboard', {
+      .state('eventsIndex', {
         url: '/events',
         templateUrl: "<%= asset_path('dashboard/index.html')%>",
         resolve: {
@@ -33,10 +33,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
           }
         }
       })
-      .state('eventContent', {
+      .state('eventsShow', {
         url: '/events/:id',
-        templateUrl: "<%= asset_path('dashboard/event_content.html')%>",
-        controller: 'EventCtrl',
+        templateUrl: "<%= asset_path('dashboard/show.html')%>",
+        controller: "EventCtrl",
         resolve: {
           auth: function($auth) {
             return $auth.validateUser();
@@ -50,6 +50,5 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
       // By default, you only need to configure apiUrl
       // Note that if you put a '/' at the end of the link, there will be errors when calling the api
       apiUrl: 'http://localhost:3000'
-
     });
 }])

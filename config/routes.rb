@@ -4,20 +4,11 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   namespace :api do
-
-    resources :events,
-      only: [:index, :show, :create, :update, :destroy],
-      :defaults => {:format => 'json'} do
-        resources :tasks,
-          only: [:index, :show, :create, :update, :destroy],
-          :defaults => {:format => 'json'}
-        resources :locations,
-          only: [:index, :show, :create, :update, :destroy],
-          :defaults => {:format => 'json'}
-        resources :users,
-          only: [:index, :show],
-          :defaults => {:format => 'json'}
-        end
+    resources :events, only: [:index, :show, :create, :update, :destroy] do
+      resources :tasks, only: [:index, :show, :create, :update, :destroy]
+      put '/locations/:id/vote', to: "locations#vote"
+      resources :locations, only: [:index, :show, :create, :update, :destroy]
+      resources :users, only: [:index]
+    end
   end
-
 end
