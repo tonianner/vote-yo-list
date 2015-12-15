@@ -37,9 +37,7 @@ module API
         render json: @location.errors, status: 422
       end
     end
-# increment!(attribute, by = 1)
-# @approval_period = ApprovalPeriod.find(params[:period])
-# @approval_period.update_attribute("period_id", @approval.period_id + 1)
+
     def vote
       if params[:vote] == "upvote"
         # need to set schema to default 0 for + to work

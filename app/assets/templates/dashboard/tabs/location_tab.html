@@ -1,6 +1,5 @@
-<h1> Location with highest votes : <strong ng-repeat="msg in maxVotes()"> {{ msg }}</strong>
+<h1 ng-repeat="msg in maxVotes()"> Location with highest votes : {{ msg.place_name }}<strong> with {{ msg.votes }} votes</strong>
 </h1>
-{{ maxPlaceVotes.place_name }}
 
 <form class="input-group" ng-submit="addLocation()">
   <input type="text"
