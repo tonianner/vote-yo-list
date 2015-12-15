@@ -1,0 +1,17 @@
+{
+  "name": "vote-yo-list",
+  "verion": "0.0.1",
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-ui-router": "~0.2.15",
+    "ng-token-auth": "~0.0.28",
+    "bootstrap": "~3.3.6",
+    "wow": "wowjs#~1.1.2",
+    "angular-cookies": "~1.4.8",
+    "angular-resource": "~1.4.8",
+    "angular-xeditable": "~0.1.9",
+    "angular-bootstrap": "~0.14.3",
+    "angularjs-datepicker": "~0.2.16",
+    "angular-underscore-module": "~1.0.3"
+  }
+}
