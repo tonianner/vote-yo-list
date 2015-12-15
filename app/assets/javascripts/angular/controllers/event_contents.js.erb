@@ -43,9 +43,8 @@ function DashBoardCtrl(EventFactory, $scope, $stateParams) {
     $scope.selectedEvent.$update({id: $stateParams.id})
   }
 
-  $scope.updateEventDate = function() {
+  $scope.updateEventDate = function(data) {
     $scope.selectedEvent.$update({id: $stateParams.id})
-    console.log('saved')
   }
 
   // Delete

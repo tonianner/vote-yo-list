@@ -26,6 +26,24 @@ function locationCtrl(LocationFactory, $scope, $stateParams) {
     $scope.allLocations.splice(index, 1);
   }
 
+  // $scope.result = []
+  // $scope.highestVotes = function(){
+  //   angular.forEach($scope.allLocations, function(value, key) {
+  //     $scope.result.push(value.votes)
+  //   })
+  //   return $scope.result
+  // }
+
+  // $scope.max = function () {
+  //   // $scope.allLocations.reduce(function(prev, current){
+  //   //   return (prev > current) ? prev : current
+  //   // })
+  //   angular.forEach($scope.allLocations, function(value, key){
+  //     value.reduce(function(prev,current){
+  //       return (prev.votes > current.votes) ? prev : current
+  //     })
+  //   })
+  // }
 
   $scope.upVote = function (place) {
     $scope.selectedVote = LocationList.get({eventId: $stateParams.id, id: place.id})

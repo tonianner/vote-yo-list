@@ -1,4 +1,4 @@
-<h1> Location with highest votes : <strong> Show location</strong>
+<h1> Location with highest votes : <strong> {{ max() }}</strong>
 </h1>
 
 <form class="input-group" ng-submit="addLocation()">
@@ -16,8 +16,9 @@
 <table class="table table-bordered table-hover table-condensed">
   <thead>
     <tr>
-      <th><a href="" ng-click="sortField ='location'; reverse = !reverse"> Location </a></th>
-      <th> Votes </th>
+      <th><a href="" ng-click="sortField ='location'; reverse = !reverse"> Location </a>
+    </th>
+    <th> Votes </th>
     </tr>
   </thead>
   <tbody>
