@@ -27,12 +27,12 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     $scope.allLocations.splice(index, 1);
   }
 
-  // $scope.maxVotes = function(){
-  //   console.log(_.isEmpty($scope.allLocations))
-  //   $scope.maxPlaceVotes = _.max($scope.allLocations, function(place){ return place.votes; })
+  $scope.maxVotes = function(){
+    $scope.maxPlaceVotes = _.max($scope.allLocations, function(place){ return place.votes; })
 
-  //   console.log ($scope.maxPlaceVotes)
-  // }
+    console.log(_.isEmpty($scope.allLocations))
+    console.log ($scope.maxPlaceVotes)
+  }
 
 
   // UpVote button
