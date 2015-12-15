@@ -28,7 +28,6 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
   }
 
   // Return location with max number of votes >> http://underscorejs.org/#max
-
   $scope.maxVotes = function(){
     $scope.maxPlaceVotes = _.max($scope.allLocations,
       function(place){
@@ -39,6 +38,7 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
         return same.votes == $scope.maxPlaceVotes.votes;
       })
   }
+
 
   // UpVote button
   $scope.upVote = function (index) {
