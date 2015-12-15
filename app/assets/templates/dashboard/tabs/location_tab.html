@@ -1,4 +1,4 @@
-<h1> Location with highest votes : <strong> {{ max }} </strong>
+<h1> Location with highest votes : <strong ng-show="maxVotes()"> {{ maxPlaceVotes }}</strong>
 </h1>
 
 <form class="input-group" ng-submit="addLocation()">
@@ -22,7 +22,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="place in allLocations  | filter:query | orderBy:sortField:reverse:-location">
+    <tr ng-repeat="place in allLocations  | filter:query | orderBy:sortField:reverse">
       <td>
         <button class="btn btn-warning btn-xs pull-right" ng-click="deleteLocation(place.id)">X</button>
         <p>{{ place.place_name }}</p>

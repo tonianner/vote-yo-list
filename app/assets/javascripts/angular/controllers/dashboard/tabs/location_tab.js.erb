@@ -11,6 +11,7 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
 
   $scope.newPlace = {};
 
+
   // Create Location
   $scope.addLocation = function() {
     LocationList.save({eventId: $stateParams.id}, $scope.newPlace, function(newPlace) {
@@ -26,35 +27,16 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     $scope.allLocations.splice(index, 1);
   }
 
-  // console.log(_.isEmpty($scope.getPlaces))
-  // console.log($scope.getPlaces)
+  // $scope.maxVotes = function(){
+  //   console.log(_.isEmpty($scope.allLocations))
+  //   $scope.maxPlaceVotes = _.max($scope.allLocations, function(place){ return place.votes; })
 
-  // $scope.getPlaces = LocationList.query({eventId: $stateParams.id})
-  //   .$promise.then(function(data) {
-  //     console.log(data)
-  //     $scope.data = data;
-  //   });
-
-
-  // $scope.max = _.max($scope.allLocations,
-  //   function(place){
-  //     console.log(place.votes)
-  // });
-
-   //  $scope.user = User.get( {username: 'bob'}  );    // GET
-   //  $scope.user.$promise.then(function(data) {
-   //     console.log(data);
-   // });
-
-  //   var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
-  // _.max(stooges, function(stooge){ return stooge.age; });
-  // => {name: 'curly', age: 60};
-
+  //   console.log ($scope.maxPlaceVotes)
+  // }
 
 
   // UpVote button
   $scope.upVote = function (index) {
-
     if ($scope.allLocations[index] == null) {
       $scope.allLocations[index] = 0
     }
@@ -72,7 +54,6 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
   }
 
   $scope.downVote = function (index) {
-
     if ($scope.allLocations[index] == null) {
       $scope.allLocations[index] = 0
     }

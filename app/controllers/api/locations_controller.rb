@@ -37,13 +37,16 @@ module API
         render json: @location.errors, status: 422
       end
     end
-
+# increment!(attribute, by = 1)
+# @approval_period = ApprovalPeriod.find(params[:period])
+# @approval_period.update_attribute("period_id", @approval.period_id + 1)
     def vote
       if params[:vote] == "upvote"
-        @location.update(votes: @location.votes + 1)
+        # need to set schema to default 0 for + to work
+        @location.update(votes: @location.votes+1)
         render json: @location, status: 201
       elsif params[:vote] == "downvote"
-        @location.update(votes: @location.votes - 1)
+        @location.update(votes: @location.votes-1)
         render json: @location, status: 201
       else
         render json: {message: "please specify vote type"}, status: 400
