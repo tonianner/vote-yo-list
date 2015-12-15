@@ -26,14 +26,14 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     $scope.allLocations.splice(index, 1);
   }
 
-  console.log(_.isEmpty($scope.getPlaces))
-  console.log($scope.getPlaces)
+  // console.log(_.isEmpty($scope.getPlaces))
+  // console.log($scope.getPlaces)
 
-  $scope.getPlaces = LocationList.query({eventId: $stateParams.id})
-    .$promise.then(function(data) {
-      console.log(data)
-      $scope.data = data;
-    });
+  // $scope.getPlaces = LocationList.query({eventId: $stateParams.id})
+  //   .$promise.then(function(data) {
+  //     console.log(data)
+  //     $scope.data = data;
+  //   });
 
 
   // $scope.max = _.max($scope.allLocations,
@@ -54,7 +54,6 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
 
   // UpVote button
   $scope.upVote = function (index) {
-    console.log()
 
     if ($scope.allLocations[index] == null) {
       $scope.allLocations[index] = 0
@@ -72,17 +71,22 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     })
   }
 
-  // DownVote button
-  $scope.downVote = function (place) {
-    $scope.selectedVote = LocationList.get({eventId: $stateParams.id, id: place.id})
+  $scope.downVote = function (index) {
 
-    if ($scope.selectedVote.votes == null) {
-      $scope.selectedVote.votes = 0
+    if ($scope.allLocations[index] == null) {
+      $scope.allLocations[index] = 0
     }
 
-    $scope.selectedVote.votes = place.votes--
-    $scope.selectedVote.votes--
-
-    $scope.selectedVote.$update({eventId: $stateParams.id, id: place.id})
+    $http({
+      url: 'http://localhost:3000/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
+      method: "PUT",
+      data: {vote: 'downvote'}
+    }).then(function (resp) {
+      console.log(resp);
+      $scope.allLocations[index].votes--;
+    }, function (resp) {
+      console.log(resp);
+    })
   }
+
 }

@@ -76,6 +76,7 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
 
   // Delete Task
   $scope.deleteTask= function(id) {
+    console.log(id)
     ToDoList.delete({eventId: $stateParams.id, id: id});
     var index = $scope.allTasks.indexOf(id);
     $scope.allTasks.splice(index, 1);

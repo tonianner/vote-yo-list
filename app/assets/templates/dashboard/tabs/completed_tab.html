@@ -9,10 +9,11 @@
         <a href="" ng-click="sortField ='title'; reverse = !reverse">Title</a>
       </th>
       <th>
-        <a href="" ng-click="sortField ='description'; reverse = !reverse">Description
+        <a href="" ng-click="sortField ='description'; reverse = !reverse">Description</a>
       </th>
-      <th style="width:20%">
-        <a href="" ng-click="sortField ='due_on'; reverse = !reverse">Due on
+      <th>
+        <a href="" ng-click="sortField ='updated_at'; reverse = !reverse">Completed on</a>
+      </th>
       </th>
       <th style="width:5%">Delete</th>
     </tr>
@@ -20,7 +21,7 @@
 
   <tbody>
     <!-- table content -->
-    <tr ng-repeat="task in completedTasks() | filter:query | orderBy:sortField:reverse">
+    <tr ng-repeat="task in completedTasks() | filter:query | orderBy:sortField:reverse:updated_on">
       <td>
         <input class="checkbox"
                type="checkbox"
@@ -36,15 +37,14 @@
           onbeforesave="updateTaskDescrip(task.id, $data)"
           editable-textarea="task.description"
           name="task[description]"
-          e-style="color: red">{{ task.description || 'no description yet'}}</a>
+          e-style="color: red">
+          <pre>{{ task.description || 'no description yet'}}</pre>
+        </a>
         <p>created on: {{ task.created_at | date:'medium' }} </p>
         <p>from {{ user.email }} </p>
       </td>
       <td>
-        Due on
-      </td>
-      <td>
-        Assigned to
+        <p>{{ task.updated_at | date:'medium' }}</p>
       </td>
       <td>
         <button class="btn btn-danger"ng-click="deleteTask(task.id)">del</button>

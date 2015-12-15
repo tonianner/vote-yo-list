@@ -25,10 +25,10 @@
       <th>
         <a href="" ng-click="sortField ='title'; reverse = !reverse">Title</a>
       </th>
-      <th>
+      <th style="width:50%">
         <a href="" ng-click="sortField ='description'; reverse = !reverse">Description
       </th>
-      <th style="width:20%">
+      <th style="width:5%">
         <a href="" ng-click="sortField ='due_on'; reverse = !reverse">Due on
       </th>
       <th style="width:5%">Delete</th>
@@ -59,8 +59,12 @@
         <a href="#"
           onbeforesave="updateTaskDescrip(task.id, $data)"
           editable-textarea="task.description"
+          e-rows="3"
+          e-cols="40"
           name="task[description]"
-          e-style="color: green">{{ task.description || 'empty'}}</a>
+          e-style="color: green">
+          <pre>{{ task.description || 'empty'}}</pre>
+        </a>
       </td>
       <td>
       <!-- https://github.com/720kb/angular-datepicker#angular-datepicker -->

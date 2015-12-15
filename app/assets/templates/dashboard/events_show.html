@@ -42,10 +42,10 @@
               <a data-toggle="tab" ng-click="tab = 2">Completed List</a>
             </li>
             <li ng-class="{active:tab === 3}">
-              <a data-toggle="tab" ng-click="tab = 3">Add Friend</a>
+              <a data-toggle="tab" ng-click="tab = 3">Location Vote</a>
             </li>
             <li ng-class="{active:tab === 4}">
-              <a data-toggle="tab" ng-click="tab = 4">Location Vote</a>
+              <a data-toggle="tab" ng-click="tab = 4">Add Friend</a>
             </li>
           </ul>
 
@@ -61,14 +61,14 @@
             <completed-tab></completed-tab>
           </div>
 
-          <!-- Add Friend Tab-->
+          <!-- Location Vote Tab-->
           <div class="tab-content" ng-show="tab === 3">
-            <friend-tab></friend-tab>
+            <location-tab></location-tab>
           </div>
 
-          <!-- Location Vote Tab-->
+          <!-- Add Friend Tab-->
           <div class="tab-content" ng-show="tab === 4">
-            <location-tab></location-tab>
+            <friend-tab></friend-tab>
           </div>
 
         </div>
