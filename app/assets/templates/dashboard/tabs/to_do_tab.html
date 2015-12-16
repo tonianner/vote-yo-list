@@ -1,24 +1,23 @@
-<!--///////////  Original //////////////-->
+<p ng-style="{'background-color': '#' + a }">{{clock |date : 'HH:mm:ss'}}</p>
+{{a}}
+
+
+<!-- Original -->
 <div class="col-lg-6 add-task-tab-input">
   <form class="input-group" ng-submit="addTask()">
     <input type="text"
            class="form-control"
            placeholder="Add Task in Event: '{{ selectedEvent.title }}'"
            ng-model="newTask.title"
-           name="newTask[title]">
+           name="newTask[title]"
+           style="color: #3F51B5;">
     <span class="input-group-btn">
     <button class="btn btn-primary" type="submit">Add Task!</button>
     </span>
   </form>
 </div>
-
-<p ng-style="{'background-color': '#' + a }">{{clock |date : 'HH:mm:ss'}}</p>
-{{a}}
-
-
 <br>
 <br>
-
 <table class="table table-bordered table-hover table-condensed">
   <thead>
     <tr>
@@ -52,7 +51,7 @@
           name="task[title]"
           ng-class="{completed: task.completed}"
           e-required
-          e-style="color: green">{{ (task.title || 'empty') | uppercase}}</a>
+          e-style="color: blue">{{ (task.title || 'empty') | uppercase}}</a>
         </span>
       </td>
       <td>
@@ -85,7 +84,7 @@
 
       </td>
       <td>
-        <button class="btn btn-danger"ng-click="deleteTask(task.id)">del</button>
+        <button class="btn btn-danger"ng-click="deleteTask(task.id)">Delete</button>
       </td>
     </tr>
   </tbody>

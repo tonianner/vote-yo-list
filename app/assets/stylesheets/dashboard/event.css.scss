@@ -8,10 +8,25 @@
   margin-left: -15px;
 }
 
+.add-location-tab-input {
+  margin-left: 14px;
+}
+
+/* top border around each tab removed*/
 .tab-content {
   border-top: transparent;
   border-radius: 0px;
   padding: 20px;
+}
+
+.vote-icons-down {
+  color: teal;;
+  margin-right: 5px;
+}
+
+.vote-icons-up {
+  color: lightseagreen;
+  margin-right: 5px;
 }
 
 #wrapper {
