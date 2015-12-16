@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/jquery-ui.min
 
 //= require angular/angular.min
 //= require angular-resource/angular-resource.min
@@ -19,18 +20,22 @@
 //= require angular-cookies/angular-cookies
 //= require angular-ui-router/release/angular-ui-router
 
+//= require angular-ui-sortable/sortable.min
+
 //= require angular-underscore-module/angular-underscore-module
 //= require underscore/underscore-min
 
 //= require bootstrap/dist/js/bootstrap.min
+//= require angular-bootstrap/ui-bootstrap-tpls.min
+
 //= require angular-animate/angular-animate.min
 //= require wow/dist/wow.min
 
 //= require angular-xeditable/dist/js/xeditable.min
 //= require angular-xeditable/dist/js/xeditable.min
 
-//= require angular-bootstrap/ui-bootstrap-tpls.min
 //= require angularjs-datepicker/dist/angular-datepicker.min
+
 
 //= require ng-token-auth/dist/ng-token-auth
 

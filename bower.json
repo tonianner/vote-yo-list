@@ -12,6 +12,8 @@
     "angular-xeditable": "~0.1.9",
     "angular-bootstrap": "~0.14.3",
     "angularjs-datepicker": "~0.2.16",
-    "angular-underscore-module": "~1.0.3"
+    "angular-underscore-module": "~1.0.3",
+    "angular-ui-sortable": "~0.13.4",
+    "jquery-ui": "~1.11.4"
   }
 }

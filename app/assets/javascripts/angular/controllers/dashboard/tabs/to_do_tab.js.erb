@@ -31,11 +31,15 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     })
   }
 
+  // console.log($scope.allTasks)
+
   // Create New Task
   $scope.addTask = function() {
     ToDoList.save({eventId: $stateParams.id}, $scope.newTask, function(newTask) {
+      $scope.newTask = {position: $scope.allTasks.length}
       $scope.allTasks.push(newTask);
-      $scope.newTask = {}
+      // console.log($scope.newTask.position)
+      // console.log($scope.allTasks.length)
     });
   };
 
@@ -81,4 +85,40 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     var index = $scope.allTasks.indexOf(id);
     $scope.allTasks.splice(index, 1);
   }
-}
+
+  //####### TESTING #########//
+  // http://codepen.io/thgreasi/pen/iKEHd?editors=101
+  // https://github.com/angular-ui/ui-sortable
+  $scope.todos = [
+    {txt: 'Item 5', i: 5},
+    {txt: 'Item 3', i: 3},
+    {txt: 'Item 1', i: null},
+    {txt: 'Item 6', i: 6},
+    {txt: 'Item 2', i: 0},
+    {txt: 'Item 4', i: 4}
+  ];
+
+  $scope.todos.sort(function (a, b) {
+    return a.i > b.i;
+  });
+
+  $scope.sortableOptions = {
+    stop: function(e, ui) {
+      for (var index in $scope.todos) {
+        $scope.todos[index].i = index;
+      }
+
+      logModels();
+    }
+  };
+
+  $scope.sortingLog = [];
+
+  function logModels () {
+    var logEntry = $scope.todos.map(function(i){
+      return i.txt+'(pos:'+i.i+')';
+    }).join(', ');
+    $scope.sortingLog.push('Stop: ' + logEntry);
+  }
+
+} //END

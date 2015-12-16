@@ -1,3 +1,4 @@
+<!--///////////  Original //////////////-->
 <div class="col-lg-6 add-task-tab-input">
   <form class="input-group" ng-submit="addTask()">
     <input type="text"
@@ -31,7 +32,7 @@
       <th style="width:5%">Delete</th>
     </tr>
   </thead>
-    <!-- table content -->
+  <!-- table content -->
   <tbody>
     <tr ng-repeat="task in remainingTasks() | filter:query | orderBy:sortField:reverse">
       <td>
@@ -86,3 +87,28 @@
     </tr>
   </tbody>
 </table>
+
+
+
+<!--######## TESTING ########-->
+<div class="container">
+  <h2>ui.sortable ordering</h2>
+
+  <div class="well">
+    <ul ui-sortable="sortableOptions" ng-model="todos" class="list">
+      <li ng-repeat="item in todos"
+          class="item"
+          style="padding:5px 10px; cursor: move;">
+        {{item.txt}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="well">
+    <ul class="list logList">
+      <li ng-repeat="entry in sortingLog track by $index" class="logItem">
+        {{entry}}
+      </li>
+    </ul>
+  </div>
+</div>

@@ -61,7 +61,7 @@ module API
     end
 
     def task_params
-      params.require(:task).permit(:title, :description, :completed, :due_date)
+      params.require(:task).permit(:title, :description, :completed, :due_date, :position)
     end
 
     def event_permission!
