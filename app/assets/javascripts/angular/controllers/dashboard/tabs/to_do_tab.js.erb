@@ -1,9 +1,9 @@
 // to_do_tab.html & completed_tab.html
 app.controller("ToDoCtrl", ToDoCtrl)
 
-ToDoCtrl.$inject = ['ToDoFactory', '$scope', '$stateParams']
+ToDoCtrl.$inject = ['ToDoFactory', '$scope', '$stateParams', '$interval', '$filter']
 
-function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
+function ToDoCtrl(ToDoFactory, $scope, $stateParams, $interval, $filter) {
   console.log('ToDoCtrl')
 
   var ToDoList = ToDoFactory;
@@ -13,16 +13,20 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
 //============ ORIGINAL ABOVE ====================//
 
 
-  //$$$$ SORTABLE $$$$/
+  // create a new time variable with the current date
+  $scope.time = new Date();
 
+    $scope.clock = "loading clock"; // initialise the time variable
+    $scope.tickInterval = 1000 //ms
 
-  // $scope.sortableOptions = {
-  //   stop: function(e, ui) {
-  //     for (var index in $scope.checked) {
-  //       $scope.allTasks[index].position = position;
-  //     }
-  //   }
-  // };
+    var tick = function () {
+      $scope.clock = Date.now() // get the current time
+      $scope.a = $filter('date')($scope.clock,'HHmmss');
+    }
+
+    // Start the timer
+    $interval(tick, $scope.tickInterval);
+
 
 //============ ORIGINAL BELOW ====================//
 
