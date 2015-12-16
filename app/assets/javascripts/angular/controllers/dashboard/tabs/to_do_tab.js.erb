@@ -10,12 +10,28 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
 
   // Get all task in selected event
   $scope.allTasks = ToDoList.query({eventId: $stateParams.id})
+//============ ORIGINAL ABOVE ====================//
+
+
+  //$$$$ SORTABLE $$$$/
+  // $scope.remainingTasks().sort(function (a, b) {
+  //   return a.position > b.position;
+  //   console.log(a.position)
+  //   console.log(b.position)
+  // });
+
+  // $scope.sortableOptions = {
+  //   stop: function(e, ui) {
+  //     for (var index in $scope.checked) {
+  //       $scope.allTasks[index].position = position;
+  //     }
+  //   }
+  // };
+
+//============ ORIGINAL BELOW ====================//
 
   // Blank new Task for Form >> Create Task & Update Task
   $scope.newTask = {};
-
-  // Show selected Task
-  // $scope.selectedTask = ToDoList.get({eventId: $stateParams.id})
 
   // Show all Tasks not completed
   $scope.remainingTasks = function (){
@@ -31,15 +47,11 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     })
   }
 
-  // console.log($scope.allTasks)
-
   // Create New Task
   $scope.addTask = function() {
     ToDoList.save({eventId: $stateParams.id}, $scope.newTask, function(newTask) {
-      $scope.newTask = {position: $scope.allTasks.length}
+      $scope.newTask = {position: $scope.allTasks.length+1}
       $scope.allTasks.push(newTask);
-      // console.log($scope.newTask.position)
-      // console.log($scope.allTasks.length)
     });
   };
 
@@ -86,39 +98,4 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams) {
     $scope.allTasks.splice(index, 1);
   }
 
-  //####### TESTING #########//
-  // http://codepen.io/thgreasi/pen/iKEHd?editors=101
-  // https://github.com/angular-ui/ui-sortable
-  $scope.todos = [
-    {txt: 'Item 5', i: 5},
-    {txt: 'Item 3', i: 3},
-    {txt: 'Item 1', i: null},
-    {txt: 'Item 6', i: 6},
-    {txt: 'Item 2', i: 0},
-    {txt: 'Item 4', i: 4}
-  ];
-
-  $scope.todos.sort(function (a, b) {
-    return a.i > b.i;
-  });
-
-  $scope.sortableOptions = {
-    stop: function(e, ui) {
-      for (var index in $scope.todos) {
-        $scope.todos[index].i = index;
-      }
-
-      logModels();
-    }
-  };
-
-  $scope.sortingLog = [];
-
-  function logModels () {
-    var logEntry = $scope.todos.map(function(i){
-      return i.txt+'(pos:'+i.i+')';
-    }).join(', ');
-    $scope.sortingLog.push('Stop: ' + logEntry);
-  }
-
-} //END
+} //end

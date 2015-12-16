@@ -39,11 +39,11 @@
           e-style="color: red">
           <pre>{{ task.description || 'no description yet'}}</pre>
         </a>
-        <p>created on: {{ task.created_at | date:'medium' }} </p>
+        <p>created on: {{ task.created_at | date:'EEE, MMM d, h:mm a' }} </p>
         <p>from {{ user.email }} </p>
       </td>
       <td>
-        <p>{{ task.updated_at | date:'medium' }}</p>
+        <p>{{ task.updated_at | date:'EEE, MMM d, h:mm a' }}</p>
       </td>
       <td>
         <button class="btn btn-danger"ng-click="deleteTask(task.id)">del</button>
