@@ -1,5 +1,4 @@
-<br>
-<div class="col-lg-6">
+<div class="col-lg-6 add-task-tab-input">
   <form class="input-group" ng-submit="addTask()">
     <input type="text"
            class="form-control"
@@ -7,12 +6,10 @@
            ng-model="newTask.title"
            name="newTask[title]">
     <span class="input-group-btn">
-    <button class="btn btn-default" type="submit">Add Task!</button>
+    <button class="btn btn-primary" type="submit">Add Task!</button>
     </span>
-  </form><!-- /input-group -->
-</div><!-- /.col-lg-6 -->
-
-<!-- Search:<input ng-model="query" type="text"/> -->
+  </form>
+</div>
 
 <br>
 <br>
@@ -21,7 +18,7 @@
   <thead>
     <tr>
       <!-- table header -->
-      <th></th> <!-- No header for checkbox-->
+      <th><i style="color: #337ab7;" class="fa fa-check-square-o"></i></th>
       <th>
         <a href="" ng-click="sortField ='title'; reverse = !reverse">Title</a>
       </th>
