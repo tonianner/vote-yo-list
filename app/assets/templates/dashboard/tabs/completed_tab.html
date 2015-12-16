@@ -28,7 +28,7 @@
                ng-change="updateTaskCompleted(task, task.id)">
       </td>
       <td>
-        <p ng-class="{completed: task.completed}">{{ task.title || 'Input task title yet'}}</p>
+        <p ng-class="{completed: task.completed}">{{ task.title }}</p>
         </span>
       </td>
       <td>
@@ -39,8 +39,7 @@
           e-style="color: red">
           <pre>{{ task.description || 'no description yet'}}</pre>
         </a>
-        <p>created on: {{ task.created_at | date:'EEE, MMM d, h:mm a' }} </p>
-        <p>from {{ user.email }} </p>
+        <p>created on: <strong>{{ task.created_at | date:'EEE, MMM d, h:mm a"' }}</strong> from {{ user.email }} </p>
       </td>
       <td>
         <p>{{ task.updated_at | date:'EEE, MMM d, h:mm a' }}</p>

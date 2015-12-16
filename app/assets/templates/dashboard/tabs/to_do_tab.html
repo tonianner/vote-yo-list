@@ -49,8 +49,6 @@
           ng-class="{completed: task.completed}"
           e-required
           e-style="color: green">{{ (task.title || 'empty') | uppercase}}</a>
-        <p>created on: {{ task.created_at | date:'medium' }} </p>
-        <p>from {{ user.email }} </p>
         </span>
       </td>
       <td>
@@ -61,12 +59,13 @@
           e-cols="40"
           name="task[description]"
           e-style="color: green">
-          <pre>{{ task.description || 'empty'}}</pre>
+          <pre>{{ task.description || 'no description'}}</pre>
+          <p>created on: <strong>{{ task.created_at | date:'EEE, MMM d, h:mm a"' }}</strong> from {{ user.email }} </p>
         </a>
       </td>
       <td>
       <!-- https://github.com/720kb/angular-datepicker#angular-datepicker -->
-      <datepicker date-format="EEE, MMM d, h:mm a" selector="form-control" class="col-sm-4">
+      <datepicker date-format="yyyy-MM-dd" selector="form-control" class="col-sm-4">
         <div class="input-group">
             <span class="input-group-addon"
                   style="cursor: pointer">

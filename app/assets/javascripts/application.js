@@ -21,7 +21,7 @@
 //= require angular-ui-router/release/angular-ui-router
 
 //= require angular-ui-sortable/sortable.min
-//= require angular-drag-and-drop-lists/angular-drag-and-drop-lists.min
+
 
 //= require angular-underscore-module/angular-underscore-module
 //= require underscore/underscore-min
