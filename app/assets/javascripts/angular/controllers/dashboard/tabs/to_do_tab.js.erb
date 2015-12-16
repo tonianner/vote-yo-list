@@ -1,7 +1,7 @@
 // to_do_tab.html & completed_tab.html
 app.controller("ToDoCtrl", ToDoCtrl)
 
-ToDoCtrl.$inject = ['ToDoFactory', '$scope', '$stateParams', '$interval', '$filter']
+ToDoCtrl.$inject = ['ToDoFactory', '$scope', '$stateParams', '$interval', '$filter', 'moment']
 
 function ToDoCtrl(ToDoFactory, $scope, $stateParams, $interval, $filter) {
   console.log('ToDoCtrl')
@@ -11,21 +11,25 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams, $interval, $filter) {
   // Get all task in selected event
   $scope.allTasks = ToDoList.query({eventId: $stateParams.id})
 //============ ORIGINAL ABOVE ====================//
-
+  $scope.eventPassed = function(task){
+    if (new Date(task.due_date) < new Date()) {
+      return "event-passed"
+    }
+  }
 
   // create a new time variable with the current date
   $scope.time = new Date();
 
-    $scope.clock = "loading clock"; // initialise the time variable
-    $scope.tickInterval = 1000 //ms
+  $scope.clock = "loading clock"; // initialise the time variable
+  $scope.tickInterval = 1000 //ms
 
-    var tick = function () {
-      $scope.clock = Date.now() // get the current time
-      $scope.a = $filter('date')($scope.clock,'HHmmss');
-    }
+  var tick = function () {
+    $scope.clock = Date.now() // get the current time
+    $scope.a = $filter('date')($scope.clock,'HHmmss');
+  }
 
-    // Start the timer
-    $interval(tick, $scope.tickInterval);
+  // Start the timer
+  $interval(tick, $scope.tickInterval);
 
 
 //============ ORIGINAL BELOW ====================//

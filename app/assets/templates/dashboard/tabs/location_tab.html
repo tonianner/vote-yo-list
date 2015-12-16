@@ -13,31 +13,31 @@
 
 <!-- 2 Divs side by side -->
 <div class="col-md-8">
-  <table class="table table-bordered table-hover table-condensed">
+  <table class="table table-bordered table-hover table-condensed" class="text-center">
     <thead>
-      <tr>
+      <tr class="text-center">
+        <th style="width:20%;"> Number of votes </th>
         <th>
           <a href="" ng-click="sortField ='location'; reverse = !reverse"> Location </a>
         </th>
-        <th> Number of votes </th>
         <th style="width:5%">Delete</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="place in allLocations  | filter:query | orderBy:sortField:reverse">
+      <tr ng-repeat="place in allLocations  | filter:query | orderBy:sortField:reverse" class="text-center">
+        <td>
+          {{place.votes}}
+        </td>
         <td>
           <p>{{ place.place_name }}</p>
           <i title="Up Votes"
              ng-click="upVote($index)"
-             class="fa fa-thumbs-o-up fa-2x pull-right vote-icons-up"
+             class="fa fa-thumbs-o-up fa-2x vote-icons-up"
              style='cursor:pointer'></i>
           <i title="Down Votes"
              ng-click="downVote($index)"
-             class="fa fa-thumbs-o-down fa-2x pull-right vote-icons-down"
+             class="fa fa-thumbs-o-down fa-2x vote-icons-down"
              style='cursor:pointer'></i>
-        </td>
-        <td>
-          {{place.votes}}</div>
         </td>
         <td>
           <button class="btn btn-warning" ng-click="deleteLocation(place.id)">Delete</button>

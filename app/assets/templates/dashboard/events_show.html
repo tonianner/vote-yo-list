@@ -16,8 +16,7 @@
             <input class="form-control"
                    placeholder="{{ selectedEvent.due_date }}"
                    ng-model="selectedEvent.due_date"
-                   ng-change="updateEventDate(selectedEvent.due_date)"
-                   />
+                   ng-change="updateEventDate(selectedEvent.due_date)"/>
           </div>
           <p>Event Date:</p>
         </datepicker>
@@ -62,7 +61,7 @@
           </div>
 
           <!-- Location Vote Tab-->
-          <div class="tab-content panel panel-default" ng-show="tab === 3">
+          <div class="tab-content" ng-show="tab === 3">
             <location-tab></location-tab>
           </div>
 

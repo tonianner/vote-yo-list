@@ -37,7 +37,7 @@
   </thead>
   <!-- table content -->
   <tbody ui-sortable="sortableOptions">
-    <tr ng-repeat="task in remainingTasks() | filter:query | orderBy:sortField:reverse" style="padding:5px 10px; cursor: move;">
+    <tr ng-repeat="task in remainingTasks() | filter:query | orderBy:sortField:reverse" style="padding:5px 10px; cursor: move;" ng-class="eventPassed(task)">
       <td>
         <input class="checkbox"
                type="checkbox"
