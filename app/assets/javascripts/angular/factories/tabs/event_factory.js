@@ -2,9 +2,11 @@ app.factory('EventFactory', EventFactory);
 
 EventFactory.$inject = ['$resource'];
 
+var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
+
 function EventFactory($resource) {
 
-  return $resource('http://localhost:3000/api/events/:id',
+  return $resource(url + '/api/events/:id',
     {id: '@_id'},
     {'update': { method:'PUT' }}
   );
