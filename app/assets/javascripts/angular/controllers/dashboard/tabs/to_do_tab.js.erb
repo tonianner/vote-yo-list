@@ -10,29 +10,6 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams, $interval, $filter) {
 
   // Get all task in selected event
   $scope.allTasks = ToDoList.query({eventId: $stateParams.id})
-//============ ORIGINAL ABOVE ====================//
-  $scope.eventPassed = function(task){
-    if (new Date(task.due_date) < new Date()) {
-      return "event-passed"
-    }
-  }
-
-  // create a new time variable with the current date
-  $scope.time = new Date();
-
-  $scope.clock = "loading clock"; // initialise the time variable
-  $scope.tickInterval = 1000 //ms
-
-  var tick = function () {
-    $scope.clock = Date.now() // get the current time
-    $scope.a = $filter('date')($scope.clock,'HHmmss');
-  }
-
-  // Start the timer
-  $interval(tick, $scope.tickInterval);
-
-
-//============ ORIGINAL BELOW ====================//
 
   // Blank new Task for Form >> Create Task & Update Task
   $scope.newTask = {};
@@ -92,6 +69,8 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams, $interval, $filter) {
     $scope.selectedTask.due_date = task.due_date
 
     $scope.selectedTask.$update({eventId: $stateParams.id, id: task.id})
+
+    $scope.istxtPassed = true
   }
 
   // Delete Task
@@ -100,6 +79,36 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams, $interval, $filter) {
     ToDoList.delete({eventId: $stateParams.id, id: id});
     var index = $scope.allTasks.indexOf(id);
     $scope.allTasks.splice(index, 1);
+  }
+
+  $scope.eventPassed = function(task){
+    // return class to change table color
+    if (task.due_date == null) {
+      return "event-no-date"
+    } else if (new Date(task.due_date) < new Date()) {
+      return "event-passed"
+    } else {
+      return "event-no-date"
+    }
+  }
+
+  // to show html text
+  $scope.datePassed = function(task){
+    if (new Date(task.due_date) < new Date()){
+      return true
+    }
+  }
+
+  $scope.dateNull = function(task) {
+    if (task.due_date == null || task.due_date < new Date()) {
+      return true
+    }
+  }
+
+  $scope.futureDate = function(task) {
+    if (new Date(task.due_date) >= new Date()) {
+      return true
+    }
   }
 
 } //end

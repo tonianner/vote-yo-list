@@ -67,21 +67,29 @@
         </a>
       </td>
       <td>
-      <!-- https://github.com/720kb/angular-datepicker#angular-datepicker -->
-      <datepicker date-format="yyyy-MM-dd" selector="form-control" class="col-sm-4">
-        <div class="input-group">
-            <span class="input-group-addon"
-                  style="cursor: pointer">
-              <i class="fa fa-lg fa-calendar"></i>
-            </span>
-            <input class="form-control"
-                   placeholder="{{ task.due_date }}"
-                   ng-model="task.due_date"
-                   ng-change="updateTasktDate(task)"
-                   style="width:120px;"
-                   />
-      </datepicker>
+        <!-- https://github.com/720kb/angular-datepicker#angular-datepicker -->
+        <datepicker date-format="yyyy-MM-dd" selector="form-control" class="col-sm-4">
+          <div class="input-group">
+              <span class="input-group-addon"
+                    style="cursor: pointer">
+                <i class="fa fa-lg fa-calendar"></i>
+              </span>
+              <input class="form-control"
+                     placeholder="{{ task.due_date }}"
+                     ng-model="task.due_date"
+                     ng-change="updateTasktDate(task)"
+                     style="width:120px;"
+                     />
+          </div>
+        </datepicker>
+        <br>
+        <br>
+        <p class="text-center"
+           ng-show="datePassed(task)"
+           ng-hide="dateNull(task) || futureDate(task)">Task Overdue</p>
 
+        <p class="text-center"
+           ng-show="dateNull(task)">No Date Set</p>
       </td>
       <td>
         <button class="btn btn-danger"ng-click="deleteTask(task.id)">Delete</button>
