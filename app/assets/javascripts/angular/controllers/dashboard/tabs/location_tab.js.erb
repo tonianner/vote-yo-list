@@ -7,6 +7,8 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
 
   var LocationList = LocationFactory
 
+  var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
+
   $scope.allLocations = LocationList.query({eventId: $stateParams.id})
 
   $scope.newPlace = {};
@@ -45,7 +47,6 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     if ($scope.allLocations[index] == null) {
       $scope.allLocations[index] = 0
     }
-    var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
     $http({
       url: url + '/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
@@ -63,7 +64,6 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     if ($scope.allLocations[index] == null) {
       $scope.allLocations[index] = 0
     }
-    var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
     $http({
       url: url + '/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
