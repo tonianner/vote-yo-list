@@ -1,8 +1,6 @@
-app.controller("EventShowCtrl", EventShowCtrl)
+app.controller("EventShowCtrl", ['EventFactory', '$scope', '$stateParams',
 
-EventShowCtrl.$inject = ['EventFactory', '$scope', '$stateParams']
-
-function EventShowCtrl(EventFactory, $scope, $stateParams) {
+function (EventFactory, $scope, $stateParams) {
   console.log("EventShowCtrl");
 
   $scope.selectedEvent = EventFactory.get({id: $stateParams.id})
@@ -24,4 +22,4 @@ function EventShowCtrl(EventFactory, $scope, $stateParams) {
   $scope.updateEventDate = function(data) {
     $scope.selectedEvent.$update({id: $stateParams.id})
   }
-}
+}]);
