@@ -1,6 +1,6 @@
 app.controller('NavBarCtrl', [
-  '$scope', '$auth', '$location', 'UserFactory', '$rootScope',
-    function($scope, $auth, $location, UserFactory, $rootScope){
+  '$scope', '$auth', 'UserFactory', '$rootScope',
+    function($scope, $auth, UserFactory, $rootScope){
       console.log("NavBarCtrl")
 
       // check if user exist

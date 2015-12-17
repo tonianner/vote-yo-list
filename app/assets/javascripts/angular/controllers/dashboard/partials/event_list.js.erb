@@ -3,9 +3,9 @@
 
 app.controller("EventListCtrl", EventListCtrl)
 
-EventListCtrl.$inject = ['EventFactory', '$scope', '$stateParams', '_']
+EventListCtrl.$inject = ['EventFactory', '$scope', '_']
 
-function EventListCtrl(EventFactory, $scope, $stateParams, _) {
+function EventListCtrl(EventFactory, $scope, _) {
   console.log('EventListCtrl')
 
   // EVENTS //

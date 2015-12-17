@@ -1,8 +1,8 @@
 app.controller('LocationCtrl',locationCtrl)
 
-locationCtrl.$inject = ['LocationFactory', '$scope', '$stateParams', '_', '$http']
+locationCtrl.$inject = ['LocationFactory', '$scope', '$stateParams', '$http']
 
-function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
+function locationCtrl(LocationFactory, $scope, $stateParams, $http) {
   console.log('LocationCtrl')
 
   var LocationList = LocationFactory
