@@ -1,7 +1,30 @@
-
+/* Borders of the ihover items */
 .ih-item.square {
   border-color: #e7e7e7;
 }
+
+/*http://bootsnipp.com/snippets/kWVW*/
+a.fire-icon i,
+.fire-icon h4.list-group-item-heading {
+  color:#dd4b39;
+}
+a.fire-icon:hover { background-color:#dd4b39; }
+a.fire-icon:hover * { color:#FFF; }
+
+a.check-icon i,
+.check-icon h4.list-group-item-heading {
+  color:#00acee;
+}
+a.check-icon:hover { background-color:#00acee; }
+a.check-icon:hover * { color:#FFF; }
+
+a.vote-icon i,
+.vote-icon h4.list-group-item-heading {
+  color:#34526f;
+}
+a.vote-icon:hover { background-color:#34526f; }
+a.vote-icon:hover * { color:#FFF; }
+
 
 /* index.html: HEADER*/
 #static-index {
