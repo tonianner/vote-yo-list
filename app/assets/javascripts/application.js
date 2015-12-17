@@ -28,7 +28,7 @@
 //= require bootstrap/dist/js/bootstrap.min
 //= require angular-bootstrap/ui-bootstrap-tpls.min
 
-//= require angular-animate/angular-animate.js
+//= require angular-animate/angular-animate
 //= require wow/dist/wow.min
 
 //= require angular-xeditable/dist/js/xeditable.min
