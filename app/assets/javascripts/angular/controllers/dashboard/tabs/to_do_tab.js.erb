@@ -1,9 +1,7 @@
 // to_do_tab.html & completed_tab.html
-app.controller("ToDoCtrl", ToDoCtrl)
+app.controller("ToDoCtrl", ['ToDoFactory', '$scope', '$stateParams', '$filter',
 
-ToDoCtrl.$inject = ['ToDoFactory', '$scope', '$stateParams', '$filter']
-
-function ToDoCtrl(ToDoFactory, $scope, $stateParams, $filter) {
+function (ToDoFactory, $scope, $stateParams, $filter) {
   console.log('ToDoCtrl')
 
   var ToDoList = ToDoFactory;
@@ -111,4 +109,4 @@ function ToDoCtrl(ToDoFactory, $scope, $stateParams, $filter) {
     }
   }
 
-} //end
+}]); //end
