@@ -7,7 +7,7 @@ app.controller('LogInCtrl', [
         $auth.submitLogin($scope.loginForm).
          then(function(resp) {
            // redirect back to root when registration succesfull
-           $location.path('/');
+           $location.path('/events');
          }).
          catch(function(resp) {
           $scope.errorMessageLogIn = resp.errors;
