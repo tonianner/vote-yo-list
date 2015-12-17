@@ -30,8 +30,8 @@ module VoteYoList
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.assets.initialize_on_precompile = false
     config.active_record.raise_in_transactional_callbacks = true
     config.serve_static_files = true
-    config.assets.initialize_on_precompile = false
   end
 end

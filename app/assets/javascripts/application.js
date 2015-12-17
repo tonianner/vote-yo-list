@@ -22,9 +22,6 @@
 
 //= require angular-ui-sortable/sortable.min
 
-//= require angular-moment/angular-moment
-
-
 //= require angular-underscore-module/angular-underscore-module
 //= require underscore/underscore-min
 
