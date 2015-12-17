@@ -1,12 +1,8 @@
-app.factory('FriendFactory', FriendFactory);
-
-FriendFactory.$inject = ['$resource'];
-
 var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
-function FriendFactory($resource) {
+app.factory('FriendFactory', ['$resource', function ($resource) {
 
   return $resource(url + '/api/events/:eventId/users/:userId',
     {eventId:'@eventId', userId:'@userId'}
   );
-}
+}]);
