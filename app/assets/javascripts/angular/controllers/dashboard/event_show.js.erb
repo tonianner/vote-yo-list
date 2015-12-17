@@ -1,7 +1,14 @@
-app.controller("EventShowCtrl", ['EventFactory', '$scope', '$stateParams',
+app.controller("EventShowCtrl", ['EventFactory', '$scope', '$stateParams', '$state', '$auth',
 
-function (EventFactory, $scope, $stateParams) {
+function (EventFactory, $scope, $stateParams, $state, $auth) {
   console.log("EventShowCtrl");
+
+  $auth.validateUser().then(function(resp){
+    console.log(resp);
+  }, function(resp){
+    console.log(resp);
+    $state.go('login');
+  })
 
   $scope.selectedEvent = EventFactory.get({id: $stateParams.id})
 

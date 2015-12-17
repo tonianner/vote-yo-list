@@ -33,21 +33,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
       .state('eventsIndex', {
         url: '/events',
         templateUrl: "<%= asset_path('dashboard/index.html')%>",
-        resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          }
-        }
+        controller: 'EventCtrl'
       })
       .state('eventsShow', {
         url: '/events/:id',
         templateUrl: "<%= asset_path('dashboard/events_show.html')%>",
-        controller: "EventShowCtrl",
-        resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          }
-        }
+        controller: "EventShowCtrl"
       })
 
     $urlRouterProvider.otherwise('/');
