@@ -45,10 +45,10 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     if ($scope.allLocations[index] == null) {
       $scope.allLocations[index] = 0
     }
-    $scope.urlTarget = "<%= ENV['URL'] %>" || "http://localhost:3000";
+    var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
     $http({
-      url: $scope.urlTarget + '/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
+      url: url + '/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
       method: "PUT",
       data: {vote: 'upvote'}
     }).then(function (resp) {
@@ -63,10 +63,10 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     if ($scope.allLocations[index] == null) {
       $scope.allLocations[index] = 0
     }
-    $scope.urlTarget = "<%= ENV['URL'] %>" || "http://localhost:3000";
+    var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
     $http({
-      url: $scope.urlTarget + '/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
+      url: url + '/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
       method: "PUT",
       data: {vote: 'downvote'}
     }).then(function (resp) {
