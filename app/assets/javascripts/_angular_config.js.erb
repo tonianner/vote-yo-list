@@ -7,9 +7,9 @@ var app = angular.module("voteYoList", ['ngResource',
                                         'ui.sortable'])
 
 // http://vitalets.github.io/angular-xeditable/
-app.run(function(editableOptions) {
+app.run(['editableOptions', function(editableOptions) {
   editableOptions.theme = 'bs3';
-});
+}]);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
   function($stateProvider, $urlRouterProvider, $authProvider){
