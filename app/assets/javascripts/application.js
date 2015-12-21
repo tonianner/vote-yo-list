@@ -22,16 +22,13 @@
 
 //= require angular-ui-sortable/sortable.min
 
-//= require angular-moment/angular-moment
-
-
 //= require angular-underscore-module/angular-underscore-module
 //= require underscore/underscore-min
 
 //= require bootstrap/dist/js/bootstrap.min
 //= require angular-bootstrap/ui-bootstrap-tpls.min
 
-//= require angular-animate/angular-animate.min
+//= require angular-animate/angular-animate
 //= require wow/dist/wow.min
 
 //= require angular-xeditable/dist/js/xeditable.min

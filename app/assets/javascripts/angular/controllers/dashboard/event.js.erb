@@ -1,0 +1,14 @@
+app.controller("EventCtrl", ['$auth', '$state',
+
+function ($auth, $state) {
+
+  console.log("EventCtrl");
+
+  $auth.validateUser().then(function(resp){
+    console.log(resp);
+  }, function(resp){
+    console.log(resp);
+    $state.go('login');
+  })
+
+}]);

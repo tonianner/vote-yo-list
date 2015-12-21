@@ -1,11 +1,11 @@
-app.controller('LocationCtrl',locationCtrl)
+app.controller('LocationCtrl', ['LocationFactory', '$scope', '$stateParams', '$http',
 
-locationCtrl.$inject = ['LocationFactory', '$scope', '$stateParams', '_', '$http']
-
-function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
+function (LocationFactory, $scope, $stateParams, $http) {
   console.log('LocationCtrl')
 
   var LocationList = LocationFactory
+
+  var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
   $scope.allLocations = LocationList.query({eventId: $stateParams.id})
 
@@ -48,7 +48,11 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     $scope.urlTarget = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
     $http({
+<<<<<<< HEAD
+      url: url + '/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
+=======
       url: $scope.urlTarget + '/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
+>>>>>>> master
       method: "PUT",
       data: {vote: 'upvote'}
     }).then(function (resp) {
@@ -66,7 +70,11 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     $scope.urlTarget = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
     $http({
+<<<<<<< HEAD
+      url: url + '/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
+=======
       url: $scope.urlTarget + '/api/events/' + $stateParams.id + '/locations/' + $scope.allLocations[index].id + '/vote',
+>>>>>>> master
       method: "PUT",
       data: {vote: 'downvote'}
     }).then(function (resp) {
@@ -77,4 +85,4 @@ function locationCtrl(LocationFactory, $scope, $stateParams, _, $http) {
     })
   }
 
-}
+}]);

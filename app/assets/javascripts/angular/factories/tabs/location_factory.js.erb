@@ -1,0 +1,9 @@
+var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
+
+app.factory('LocationFactory', ['$resource', function ($resource) {
+  return $resource(url + '/api/events/:eventId/locations/:id',
+    {eventId:'@eventId', id:'@id'},
+    {'update': { method:'PUT' }}
+  );
+
+}]);

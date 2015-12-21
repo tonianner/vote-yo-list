@@ -1,0 +1,8 @@
+var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
+
+app.factory('FriendFactory', ['$resource', function ($resource) {
+
+  return $resource(url + '/api/events/:eventId/users/:userId',
+    {eventId:'@eventId', userId:'@userId'}
+  );
+}]);

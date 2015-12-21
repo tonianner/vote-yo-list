@@ -1,11 +1,9 @@
 // directive >> event_list.js.erb
 // _angular_confit.js.erb >> .state >> url: '/events/:id'
 
-app.controller("EventListCtrl", EventListCtrl)
+app.controller("EventListCtrl", ['EventFactory', '$scope', '_',
 
-EventListCtrl.$inject = ['EventFactory', '$scope', '$stateParams', '_']
-
-function EventListCtrl(EventFactory, $scope, $stateParams, _) {
+function (EventFactory, $scope, _) {
   console.log('EventListCtrl')
 
   // EVENTS //
@@ -34,4 +32,4 @@ function EventListCtrl(EventFactory, $scope, $stateParams, _) {
     var index = $scope.allEvents.indexOf(event);
     $scope.allEvents.splice(index, 1);
   }
-}
+}]);
