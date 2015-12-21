@@ -1,28 +1,35 @@
-== README
+== Vote yo list
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project #4 in General Assembly's Web Development Immersive Course
 
-Things you may want to cover:
+Inspired by codecamp.com, I have attempted the below for this project:
 
-* Ruby version
+* Add/Edit/Delete an event
 
-* System dependencies
+* Each event will have it's own Checklist
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Each event will have a location voter
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Languages used:
+
+* Ruby & Angularjs
+
+
+Libraries:
+
+* Ui-sortable
+
+* Underscore
+
+* Angular-Xeditable
+
+* Angular Datepicker
+
+* Angular Animate
+
+* Ihover
+
+* Bootstrap
+
+* Wow
